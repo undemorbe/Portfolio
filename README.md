@@ -1,56 +1,58 @@
-# 👋 Привет, я Станьков Борис 
+# Boris Stankov — Portfolio
 
-Я разработчик мобильных приложений на Flutter, студент 2 курса ИТМО, направления мобильных и сетевых технологий.<br>
+**Live:** https://undemorbe.github.io/Portfolio/
 
----
+## Стек
 
-## 📂 Мои проекты
+- **Vite 5** + **Vue 3** (`<script setup>`, Composition API)
+- **TypeScript**
+- **Vue Router** (две страницы: `/` и `/services`)
+- **Tailwind CSS** — дизайн-система на CSS-переменных (dark/light)
+- **Lenis** — плавный скролл (с уважением к `prefers-reduced-motion`)
+- **lucide-vue-next** — иконки
+- Анимации появления — своя директива `v-reveal` на IntersectionObserver (без тяжёлых зависимостей)
 
-Здесь собраны ключевые проекты, которые я реализовал. Они демонстрируют мой опыт, навыки и подход к решению задач.
+## Особенности
 
-### [Проект 1: Менеджер паролей](https://github.com/brs-eight/password_manager)
-**Технологии:** GetIt, Bloc(Cubit), Hive, Talker <br>
-**Описание:** Менеджер паролей, работа с хранением данных локально на устройстве.
+- Переключатель языка RU/EN (сохраняется в localStorage)
+- Тёмная/светлая тема без вспышки (FOUC) — тема применяется до рендера
+- Полностью адаптивно, без горизонтального скролла
+- Доступность: focus-ring, `prefers-reduced-motion`, aria-labels
+- SEO: мета-теги, Open Graph, Twitter Cards, JSON-LD (Schema.org Person), `robots.txt`, `sitemap.xml`, `manifest.webmanifest`
+- Статический OG-образ и favicon
+- Деплой на GitHub Pages через GitHub Actions; SPA-fallback через `404.html`
 
-### [Проект 2: Система бронирования барбершопа](https://github.com/brs-eight/barber_booker)
-**Технологии:** Bloc, Firebase, Hive, Google Sign-In <br>
-**Описание:** Приложение с системой бронирования для барбершопа, возможность увидеть барберов, то чем они занимаются.
-Разделено на админ панель, барбер панель и пользовательскую панель. У каждого свои права доступа и возможности.
+## Структура
 
-### [Проект 3: Календарь привычек](https://github.com/brs-eight/tracker_habits)
-**Технологии:** Hive, HeatMap-Calendar <br>
-**Описание:** TO-Do, но с привычками и отображением в календаре в стиое GitHub commit calendar.
+```
+index.html            # entry, no-FOUC + SEO мета + JSON-LD
+vite.config.ts        # base: /Portfolio/ в production
+src/
+  main.ts             # bootstrap: тема, язык, роутер, lenis
+  router.ts           # Vue Router (/, /services)
+  i18n.ts             # реактивный язык + t()/tl()
+  data.ts             # единый источник контента (RU/EN)
+  style.css           # Tailwind + токены темы + reveal
+  directives/reveal.ts
+  lib/                # theme, scroll (lenis), asset
+  components/         # Navbar, Footer, SectionHeading, Counter, Badge
+    sections/         # Hero, About, Projects, Experience, Skills, …
+  views/              # Home.vue, ServicesView.vue
+public/               # icon.png, og.png, robots, sitemap, manifest, images
+scripts/postbuild.mjs # 404.html fallback + .nojekyll
+```
 
-### [Проект 4: Hornet](https://github.com/brs-eight/hornet)
-**Технологии:** Dio, GetIt, Bloc, Hive, GoRouter<br>
-**Описание:** Галерея изображений с сайта по API, реализован поиск по тегу, категории, фильтрация контента
+## Запуск
 
-### [Проект 5: Rick and Morty Character Explorer](https://github.com/brs-eight/RaM_Gallery)
-**Технологии:** Dio, Hive, Bloc, GoRouter<br>
-**Описание:** Приложение для сохранения своих любимых персонажей из Рик И Морти, с кешированием данных и пагинацией<br>
-**Особенности:**
-- Бесконечный скроллинг
-- Менеджмент избранных персонажей
-- Поддержка разных тем приложения
-- Возможность работы оффлайн, кеширование данных локально
-- Чистая архитектура
-- Анимации
+```bash
+npm install
+npm run dev        # разработка → http://localhost:5173
+npm run build      # production → dist/
+npm run preview    # предпросмотр собранного
+npm run typecheck  # vue-tsc --noEmit
+```
 
-### [Проект 6: СМС логгер](https://github.com/brs-eight/Notification-Background-Logger)
-**Технологии:** Dio, GetIt, Bloc, Hive, GoRouter, Equatable, Talker, Permission handler, Kotlin<br>
-**Описание:** Приложение которое слушает все входящие уведомления (из любого приложения) и СМС и далее сохраняет их в локальную базу данных и выводит
-на экране. Работает в бэкграунде. Нюанс: только для android, IOS не даёт такой доступ к уведомлениям.
+## Контент
 
-### [Проект 7: VPN клиент](https://github.com/brs-eight/catchy)
-**Технологии:** GetIt, Bloc, GoRouter, Equatable, Flutter_V2Ray, Flutter Animations <br>
-**Описание:** Приложение которое является клиентом для работы VPN, имеет два режима: VPN, Proxy only. Поддерживает V2Ray протокол.
-
----
-
-
-
-
-
-
-upd: Утеряные проекты (в ближайшее время попробую восстановить):
-Мессенджер (fcm+rtm), 2 e-com приложения, car-leasing app (google maps integrated)
+Весь контент правится в `src/data.ts` (двуязычный). Данные — из реального
+GitHub (`github.com/undemorbe`) и резюме.

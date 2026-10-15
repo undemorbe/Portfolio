@@ -1,0 +1,15 @@
+{
+  "name": "Boris Stankov — Flutter Developer",
+  "short_name": "Boris Stankov",
+  "description": "Портфолио Flutter-разработчика Бориса Станькова. / Portfolio of Flutter developer Boris Stankov.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#141416",
+  "theme_color": "#141416",
+  "lang": "ru",
+  "categories": ["portfolio", "technology", "developer"],
+  "icons": [
+    { "src": "./icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

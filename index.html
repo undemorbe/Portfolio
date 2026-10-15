@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="icon.png" />
+    <link rel="apple-touch-icon" href="icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#141416" />
+
+    <title>Boris Stankov — Flutter Developer</title>
+    <meta
+      name="description"
+      content="Boris Stankov (Борис Станьков) — Flutter developer from Saint Petersburg / Flutter-разработчик из Санкт-Петербурга. iOS & Android, Clean Architecture, BLoC, MobX, Firebase, WebSockets, Telegram Mini App, nginx & cloud deployment. Портфолио на русском и английском."
+    />
+    <meta name="author" content="Boris Stankov" />
+    <link rel="canonical" href="https://undemorbe.github.io/Portfolio/" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Boris Stankov — Flutter Developer" />
+    <meta property="og:title" content="Boris Stankov — Flutter Developer" />
+    <meta
+      property="og:description"
+      content="Flutter developer from Saint Petersburg. Mobile apps, Telegram Mini Apps, websites, backend & cloud deployment."
+    />
+    <meta property="og:url" content="https://undemorbe.github.io/Portfolio/" />
+    <meta property="og:image" content="https://undemorbe.github.io/Portfolio/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Boris Stankov — Flutter Developer" />
+    <meta
+      name="twitter:description"
+      content="Flutter developer from Saint Petersburg. Mobile apps, Telegram Mini Apps, websites, backend & cloud deployment."
+    />
+    <meta name="twitter:image" content="https://undemorbe.github.io/Portfolio/og.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Prevent theme flash: apply saved theme before paint (default: dark) -->
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem("portfolio-theme") === "light") {
+            document.documentElement.classList.add("light");
+          }
+          var l = localStorage.getItem("portfolio-lang");
+          if (l === "ru" || l === "en") document.documentElement.setAttribute("lang", l);
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Boris Stankov",
+        "alternateName": "Борис Станьков",
+        "jobTitle": "Flutter Developer",
+        "url": "https://undemorbe.github.io/Portfolio/",
+        "image": "https://undemorbe.github.io/Portfolio/images/boris.jpg",
+        "email": "mailto:stankovb08@gmail.com",
+        "sameAs": [
+          "https://github.com/undemorbe",
+          "https://www.linkedin.com/in/stankov-boris",
+          "https://t.me/undemorbe",
+          "https://hh.kz/resume/89456e4eff10c661920039ed1f6b344e713554"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Saint Petersburg",
+          "addressCountry": "RU"
+        },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "ITMO University" },
+        "knowsLanguage": ["Russian", "English"],
+        "knowsAbout": [
+          "Flutter",
+          "Dart",
+          "Kotlin",
+          "Swift",
+          "Clean Architecture",
+          "BLoC",
+          "MobX",
+          "Firebase",
+          "WebSockets",
+          "nginx",
+          "Docker",
+          "CI/CD",
+          "Mobile Development"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
