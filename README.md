@@ -1,6 +1,6 @@
 # Boris Stankov — Portfolio
 
-**Live:** https://undemorbe.github.io/Portfolio/
+**Live:** [https://undemorbe.github.io/Portfolio/](https://undemorbe.github.io/MyPortfolio/)
 
 ## Стек
 
