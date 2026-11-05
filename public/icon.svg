@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Transfer station on two crossing lines: the site's metro scheme in one mark -->
+  <defs>
+    <clipPath id="plate"><rect width="512" height="512" rx="116"/></clipPath>
+  </defs>
+  <g clip-path="url(#plate)">
+    <rect width="512" height="512" fill="#0d1220"/>
+    <path d="M-40 168 C110 168 170 256 256 256 S402 344 552 344" fill="none" stroke="#f0335a" stroke-width="68" stroke-linecap="round"/>
+    <path d="M168 -40 C168 110 256 170 256 256 S344 402 344 552" fill="none" stroke="#2f9ff0" stroke-width="68" stroke-linecap="round"/>
+    <circle cx="256" cy="256" r="78" fill="#ffffff" stroke="#0d1220" stroke-width="26"/>
+  </g>
+</svg>

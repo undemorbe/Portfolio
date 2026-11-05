@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Day scheme  = white enamel metro sign, ink type, five line colours.
+  Night scheme = tunnel blue-black, same lines lifted for contrast.
+  Colours are HSL triplets so Tailwind can apply alpha.
+*/
+@layer base {
+  :root {
+    color-scheme: light;
+    --font-display: "Geologica Variable", "Golos Text Variable", system-ui, sans-serif;
+    --font-sans: "Golos Text Variable", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+    --background: 0 0% 100%;
+    --surface: 0 0% 100%;
+    --surface-2: 220 16% 95%;
+    --foreground: 222 30% 9%;
+    --muted-foreground: 220 12% 36%;
+    --border: 220 18% 86%;
+    --border-strong: 222 30% 9%;
+
+    /* Metro lines (Saint Petersburg scheme) */
+    --m1: 345 93% 44%; /* red    - Mobile  */
+    --m2: 204 100% 39%; /* blue   - Web     */
+    --m3: 147 100% 30%; /* green  - Native  */
+    --m4: 22 83% 53%; /* orange - Deploy  */
+    --m5: 283 56% 31%; /* purple - Backend */
+
+    --accent: var(--m1);
+    --accent-foreground: 0 0% 100%;
+    --ring: var(--m2);
+    --radius: 1.25rem;
+    --shadow-color: 222 30% 20%;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --background: 224 38% 6%;
+    --surface: 224 32% 10%;
+    --surface-2: 224 28% 14%;
+    --foreground: 216 30% 95%;
+    --muted-foreground: 218 16% 68%;
+    --border: 224 22% 20%;
+    --border-strong: 216 30% 95%;
+
+    --m1: 349 90% 60%;
+    --m2: 204 96% 60%;
+    --m3: 147 70% 46%;
+    --m4: 24 92% 60%;
+    --m5: 280 60% 70%;
+
+    --accent-foreground: 224 38% 6%;
+    --shadow-color: 224 60% 2%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.5) hsl(var(--background));
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+  }
+
+  ::selection {
+    background: hsl(var(--m2) / 0.25);
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    outline: 3px solid hsl(var(--ring));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  input, textarea {
+    caret-color: hsl(var(--m1));
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.35);
+    border-radius: 999px;
+    border: 3px solid hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.6);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Enamel sign: the one surface family of the page */
+  .sign {
+    @apply rounded-[var(--radius)] border border-border bg-surface;
+    box-shadow: 0 1px 0 hsl(var(--shadow-color) / 0.04), 0 12px 32px -18px hsl(var(--shadow-color) / 0.25);
+  }
+
+  .section {
+    @apply py-24 sm:py-28 lg:py-32;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Line-coloured utilities driven by a --line custom property */
+  .line-bg {
+    background-color: hsl(var(--line));
+  }
+  .line-text {
+    color: hsl(var(--line));
+  }
+  .line-border {
+    border-color: hsl(var(--line));
+  }
+
+  .btn {
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 text-[0.95rem] font-semibold transition-[transform,background-color,box-shadow,color] duration-300;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+  .btn-primary {
+    @apply bg-foreground text-background;
+    box-shadow: 0 10px 24px -12px hsl(var(--shadow-color) / 0.6);
+  }
+  .btn-primary:hover {
+    background-color: hsl(var(--m1));
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .btn-ghost {
+    @apply border-2 border-foreground/80 text-foreground;
+  }
+  .btn-ghost:hover {
+    @apply bg-foreground text-background;
+  }
+
+  /* Scroll reveal - content stays visible if JS never runs */
+  .reveal-init {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* SVG line that draws itself when its parent is revealed */
+  .draw-line {
+    stroke-dasharray: var(--len, 1000);
+    stroke-dashoffset: var(--len, 1000);
+    transition: stroke-dashoffset 1.4s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .reveal-in .draw-line,
+  .draw-line.is-drawn {
+    stroke-dashoffset: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-init {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .draw-line {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* Theme switch: the new scheme sweeps in from the left like a train entering a platform */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  animation: scheme-sweep 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+@keyframes scheme-sweep {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}

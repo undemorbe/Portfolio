@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <title>Boris Stankov - Product Engineer</title>
+    <meta
+      name="description"
+      content="Boris Stankov (Борис Станьков) - product engineer from Saint Petersburg / продуктовый разработчик из Санкт-Петербурга. Flutter (iOS & Android), Vue + Three.js websites, Swift macOS app, Firebase, WebSockets, nginx, CI/CD. Портфолио на русском и английском."
+    />
+    <meta name="author" content="Boris Stankov" />
+    <link rel="canonical" href="https://undemorbe.github.io/Portfolio/" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Boris Stankov - Product Engineer" />
+    <meta property="og:title" content="Boris Stankov - Product Engineer" />
+    <meta
+      property="og:description"
+      content="Product engineer from Saint Petersburg: Flutter apps, websites with 3D, a native macOS app and the deploy behind them."
+    />
+    <meta property="og:url" content="https://undemorbe.github.io/Portfolio/" />
+    <meta property="og:image" content="https://undemorbe.github.io/Portfolio/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Boris Stankov - Product Engineer" />
+    <meta
+      name="twitter:description"
+      content="Product engineer from Saint Petersburg: Flutter apps, websites with 3D, a native macOS app and the deploy behind them."
+    />
+    <meta name="twitter:image" content="https://undemorbe.github.io/Portfolio/og.png" />
+
+    <!-- Prevent theme flash: saved theme, else OS preference, applied before paint -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("portfolio-theme");
+          if (t !== "dark" && t !== "light") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          if (t === "dark") document.documentElement.classList.add("dark");
+          var l = localStorage.getItem("portfolio-lang");
+          if (l === "ru" || l === "en") document.documentElement.setAttribute("lang", l);
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Boris Stankov",
+        "alternateName": "Борис Станьков",
+        "jobTitle": "Product Engineer",
+        "url": "https://undemorbe.github.io/Portfolio/",
+        "image": "https://undemorbe.github.io/Portfolio/images/boris.jpg",
+        "email": "mailto:stankovb08@gmail.com",
+        "sameAs": [
+          "https://github.com/undemorbe",
+          "https://www.linkedin.com/in/stankov-boris",
+          "https://t.me/undemorbe",
+          "https://hh.kz/resume/89456e4eff10c661920039ed1f6b344e713554"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Saint Petersburg",
+          "addressCountry": "RU"
+        },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "ITMO University" },
+        "knowsLanguage": ["Russian", "English"],
+        "knowsAbout": [
+          "Flutter",
+          "Dart",
+          "Kotlin",
+          "Swift",
+          "Clean Architecture",
+          "BLoC",
+          "MobX",
+          "Firebase",
+          "WebSockets",
+          "nginx",
+          "Docker",
+          "CI/CD",
+          "Mobile Development",
+          "Vue",
+          "Three.js",
+          "Web Development"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
