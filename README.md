@@ -20,7 +20,7 @@
 - Доступность: focus-ring, `prefers-reduced-motion`, aria-labels
 - SEO: мета-теги, Open Graph, Twitter Cards, JSON-LD (Schema.org Person), `robots.txt`, `sitemap.xml`, `manifest.webmanifest`
 - Статический OG-образ и favicon
-- Яндекс.Метрика (счётчик `114089822`): SPA-хиты на каждый переход роутера, цели на контакты, проекты, фильтры метро и переключение темы
+- Яндекс.Метрика: SPA-хиты на каждый переход роутера, цели на контакты, проекты, фильтры метро и переключение темы
 - Деплой на GitHub Pages через GitHub Actions; SPA-fallback через `404.html`
 
 ## Структура
@@ -61,7 +61,7 @@ GitHub (`github.com/undemorbe`) и резюме.
 
 ## Аналитика (Яндекс.Метрика)
 
-Счётчик — `114089822`, код инициализации — `src/lib/analytics.ts`. Метрика
+Код инициализации — `src/lib/analytics.ts`. Метрика
 включается только в production-сборке и только если задан `VITE_YM_ID`, так что
 `npm run dev` в статистику не попадает.
 
