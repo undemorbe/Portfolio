@@ -28,6 +28,7 @@ export type Goal =
   | "github"
   | "linkedin"
   | "hh"
+  | "resume"
   | "project_live"
   | "project_breakdown"
   | "station"

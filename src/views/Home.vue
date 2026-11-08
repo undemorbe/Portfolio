@@ -12,7 +12,7 @@ import GithubSection from "@/components/sections/Github.vue";
 import Contact from "@/components/sections/Contact.vue";
 
 onMounted(() => {
-  document.title = "Борис Станьков - Product engineer";
+  document.title = "Борис Станьков - Flutter-разработчик";
 });
 </script>
 

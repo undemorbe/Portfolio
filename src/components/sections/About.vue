@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { GraduationCap, Languages, Laptop } from "lucide-vue-next";
+import { Briefcase, GraduationCap, Languages, Laptop } from "lucide-vue-next";
 import { lines, sections, site, ui } from "@/data";
 import { lang, t } from "@/i18n";
 import { asset } from "@/lib/asset";
@@ -12,6 +12,7 @@ const s = sections.about;
 const facts = [
   { icon: GraduationCap, label: ui.factEducation, value: ui.factEducationValue },
   { icon: Languages, label: ui.factLanguages, value: ui.factLanguagesValue },
+  { icon: Briefcase, label: ui.factFormat, value: ui.factFormatValue },
   { icon: Laptop, label: ui.factEnv, value: ui.factEnvValue },
 ];
 const displayName = computed(() => (lang.value === "ru" ? site.nameRu : site.name));
@@ -34,14 +35,14 @@ const displayName = computed(() => (lang.value === "ru" ? site.nameRu : site.nam
               <img
                 :src="asset(site.avatar)"
                 :alt="displayName"
-                class="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                class="aspect-[4/5] w-full object-cover object-[85%_center] transition-transform duration-700 group-hover:scale-[1.04]"
                 loading="lazy"
               />
             </div>
             <figcaption class="px-2 pb-1 pt-4">
               <div class="font-display text-2xl font-bold leading-tight">{{ displayName }}</div>
               <div class="mt-1 flex items-center justify-between font-mono text-xs text-white/80">
-                <span>Product engineer</span>
+                <span>{{ t(site.role) }}</span>
                 <span class="tabular">2023 → ∞</span>
               </div>
             </figcaption>
@@ -75,7 +76,7 @@ const displayName = computed(() => (lang.value === "ru" ? site.nameRu : site.nam
             </li>
           </ul>
 
-          <dl class="mt-10 grid gap-6 sm:grid-cols-3">
+          <dl class="mt-10 grid gap-6 sm:grid-cols-2">
             <div v-for="(f, i) in facts" :key="i" v-reveal="i * 60">
               <dt class="flex items-center gap-2 text-sm font-semibold">
                 <component :is="f.icon" class="h-4 w-4 text-m1" />{{ t(f.label) }}

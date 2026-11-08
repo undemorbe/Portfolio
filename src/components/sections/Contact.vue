@@ -4,6 +4,7 @@ import { computed, ref } from "vue";
 import { Send, Mail, Phone, Linkedin, Github, FileText, FileUser, ArrowUpRight, Copy, Check } from "lucide-vue-next";
 import { site, sections, ui } from "@/data";
 import { t } from "@/i18n";
+import { asset } from "@/lib/asset";
 import SectionHeading from "@/components/SectionHeading.vue";
 
 const s = sections.contact;
@@ -33,7 +34,7 @@ const channels = computed(() => [
   { label: "LinkedIn", value: "stankov-boris", href: site.linkedinUrl, icon: Linkedin, line: "m2" },
   { label: "GitHub", value: `@${site.github}`, href: site.githubUrl, icon: Github, line: "m4" },
   { label: t(ui.resumeHh), value: "hh.kz", href: site.hhUrl, icon: FileUser, line: "m5" },
-  { label: t(ui.resumePdf), value: "Google Drive", href: site.resumeUrl, icon: FileText, line: "m5" },
+  { label: t(ui.resumePdf), value: t(ui.resumeFile), href: asset(t(site.resumePdf)), icon: FileText, line: "m5", goal: "resume" },
 ]);
 </script>
 
@@ -98,8 +99,9 @@ const channels = computed(() => [
         <li v-for="(c, i) in channels" :key="c.label" v-reveal="(i % 4) * 40" class="border-b border-border sm:odd:border-r lg:border-r lg:[&:nth-child(4n)]:border-r-0">
           <a
             :href="c.href"
-            :target="c.href.startsWith('http') ? '_blank' : undefined"
-            :rel="c.href.startsWith('http') ? 'noopener noreferrer' : undefined"
+            :data-goal="c.goal"
+            :target="/^http|\.pdf$/.test(c.href) ? '_blank' : undefined"
+            :rel="/^http|\.pdf$/.test(c.href) ? 'noopener noreferrer' : undefined"
             class="group flex items-center gap-3 px-1 py-5 sm:px-5"
             :style="{ '--line': `var(--${c.line})` }"
           >

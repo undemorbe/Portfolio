@@ -69,6 +69,11 @@ onMounted(() => {
 
         <p class="mt-4 max-w-[60ch] text-pretty leading-relaxed">{{ t(project.tagline) }}</p>
 
+        <p v-if="project.metric" class="mt-5 flex items-baseline gap-3 border-l-[3px] pl-3" :style="{ borderColor: `hsl(var(--${project.lines[0]}))` }">
+          <span class="font-display text-3xl font-extrabold tabular leading-none tracking-[-0.03em]">{{ project.metric.value }}</span>
+          <span class="text-sm leading-snug text-muted-foreground">{{ t(project.metric.label) }}</span>
+        </p>
+
         <ul class="mt-5 flex flex-wrap gap-1.5" :aria-label="t(ui.stack)">
           <li v-for="s in project.stack" :key="s" class="rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-muted-foreground">{{ s }}</li>
         </ul>

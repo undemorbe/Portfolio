@@ -113,7 +113,7 @@ onUnmounted(() => window.removeEventListener("resize", measureFill));
           <span class="grid h-9 w-9 place-items-center rounded-full bg-m1 text-sm text-white transition-transform duration-500 group-hover:rotate-[360deg]">БС</span>
           <span class="hidden leading-none sm:block lg:hidden xl:block">
             {{ lang === 'ru' ? site.nameRu : site.name }}
-            <span class="mt-0.5 block text-xs font-medium text-muted-foreground">Product engineer</span>
+            <span class="mt-0.5 block text-xs font-medium text-muted-foreground">{{ t(site.role) }}</span>
           </span>
         </component>
 

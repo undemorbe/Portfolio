@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent, ref } from "vue";
-import { ArrowDown, Github, Linkedin, Send } from "lucide-vue-next";
-import { lines, site, ui } from "@/data";
+import { ArrowDown, FileText, Github, Linkedin, Send } from "lucide-vue-next";
+import { heroStats, lines, site, ui } from "@/data";
 import { lang, t } from "@/i18n";
 import { scrollToHash } from "@/lib/scroll";
+import { asset } from "@/lib/asset";
 import { goToLine, goToStation } from "@/lib/stationFocus";
 import MetroSchemeSvg from "@/components/metro/MetroSchemeSvg.vue";
 import LineRoundel from "@/components/metro/LineRoundel.vue";
@@ -37,7 +38,7 @@ const sceneReady = ref(false);
           </h1>
 
           <p class="hero-in mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 sm:mt-5" style="--d: 200ms">
-            <span class="font-display text-xl font-semibold sm:text-2xl">Product engineer</span>
+            <span class="font-display text-xl font-semibold sm:text-2xl">{{ t(site.role) }}</span>
             <span class="flex items-center gap-1" aria-hidden="true">
               <span v-for="l in lines" :key="l.id" class="h-2 w-5 rounded-full" :class="`bg-${l.id}`" />
             </span>
@@ -81,7 +82,15 @@ const sceneReady = ref(false);
             {{ t(site.tagline) }}
           </p>
 
-          <div class="hero-in mt-8 flex flex-wrap items-center gap-3" style="--d: 380ms">
+          <dl class="hero-in mt-7 grid max-w-[34rem] grid-cols-3 gap-4 border-y border-border py-4" style="--d: 340ms">
+            <div v-for="s in heroStats" :key="s.value">
+              <dt class="sr-only">{{ t(s.label) }}</dt>
+              <dd class="font-display text-2xl font-extrabold tabular leading-none tracking-[-0.02em] sm:text-3xl">{{ s.value }}</dd>
+              <dd class="mt-1.5 text-xs leading-snug text-muted-foreground sm:text-[0.8125rem]" aria-hidden="true">{{ t(s.label) }}</dd>
+            </div>
+          </dl>
+
+          <div class="hero-in mt-7 flex flex-wrap items-center gap-3" style="--d: 380ms">
             <a :href="site.telegramUrl" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
               <Send class="h-4 w-4" />
               {{ t(ui.messageTg) }}
@@ -92,9 +101,10 @@ const sceneReady = ref(false);
             </a>
           </div>
 
-          <div class="hero-in mt-6 flex items-center gap-1 text-muted-foreground" style="--d: 460ms">
+          <div class="hero-in mt-6 flex flex-wrap items-center gap-1 text-muted-foreground" style="--d: 460ms">
             <a :href="site.githubUrl" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="grid h-11 w-11 place-items-center rounded-full transition-colors hover:bg-surface-2 hover:text-foreground"><Github class="h-5 w-5" /></a>
             <a :href="site.linkedinUrl" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="grid h-11 w-11 place-items-center rounded-full transition-colors hover:bg-surface-2 hover:text-foreground"><Linkedin class="h-5 w-5" /></a>
+            <a :href="asset(t(site.resumePdf))" data-goal="resume" target="_blank" rel="noopener noreferrer" class="inline-flex h-11 items-center gap-1.5 rounded-full px-3 text-sm font-medium transition-colors hover:bg-surface-2 hover:text-foreground"><FileText class="h-4 w-4" />{{ t(ui.resume) }}</a>
             <a :href="`mailto:${site.email}`" class="ml-2 text-sm underline decoration-border hover:text-foreground hover:decoration-m1">{{ site.email }}</a>
           </div>
         </div>

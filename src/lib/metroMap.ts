@@ -11,9 +11,10 @@ export type Station = { slug: string; label: string; x: number; y: number };
 export const stations: Station[] = [
   { slug: "hornet", label: "Hornet", x: -5.6, y: -2.2 },
   { slug: "xouston", label: "Xouston", x: -3.6, y: -1.5 },
-  { slug: "arys", label: "ARYS", x: -1.6, y: -0.4 },
-  { slug: "q-story", label: "Q-Story", x: 0.4, y: 0.2 },
-  { slug: "pora", label: "PORA", x: 2.4, y: 0.6 },
+  { slug: "arys", label: "ARYS", x: -1.8, y: -0.4 },
+  { slug: "q-story", label: "Q-Story", x: 0.0, y: 0.15 },
+  { slug: "korst", label: "KORST", x: 1.6, y: 0.45 },
+  { slug: "pora", label: "PORA", x: 3.0, y: 0.7 },
   { slug: "wallpap", label: "Wallpap", x: 4.6, y: -1.9 },
   { slug: "tg-mini-app", label: "Mini App", x: 4.2, y: 2.4 },
   { slug: "dirigible", label: "dirigible", x: 1.8, y: 2.9 },
@@ -27,8 +28,8 @@ type P = [number, number] | string;
 
 /** Each line: ordered waypoints (station slugs or raw points) and a parallel offset for shared track. */
 export const linePaths: { id: LineId; offset: number; points: P[] }[] = [
-  { id: "m1", offset: -0.16, points: [[-6.8, -2.9], "hornet", "xouston", "arys", "q-story", "pora", [4.0, 1.0], [5.6, 0.6]] },
-  { id: "m5", offset: 0.16, points: [[-4.6, 0.9], [-2.8, 0.1], "arys", "q-story", "pora", [3.4, -0.4], [3.6, -2.6]] },
+  { id: "m1", offset: -0.16, points: [[-6.8, -2.9], "hornet", "xouston", "arys", "q-story", "korst", "pora", [4.4, 1.1], [5.8, 0.7]] },
+  { id: "m5", offset: 0.16, points: [[-4.6, 0.9], [-2.8, 0.1], "arys", "q-story", "korst", "pora", [3.8, -0.3], [3.7, -2.6]] },
   { id: "m3", offset: 0, points: [[2.2, -3.2], [3.6, -2.6], "wallpap", [5.8, -0.6], [6.6, 0.4]] },
   { id: "m4", offset: 0.17, points: ["wallpap", [3.8, -0.6], "pora", "tg-mini-app", "dirigible", "budini-coffee", "flower-cup", [-5.2, 2.0]] },
   { id: "m2", offset: -0.17, points: [[6.4, 3.4], "tg-mini-app", "dirigible", "budini-coffee", "flower-cup", [-5.4, 3.4], [-6.8, 2.6]] },

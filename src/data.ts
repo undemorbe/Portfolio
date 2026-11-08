@@ -24,14 +24,14 @@ import type { L, LList } from "@/i18n";
 export const site = {
   name: "Boris Stankov",
   nameRu: "Борис Станьков",
-  role: "Product engineer",
+  role: { ru: "Flutter-разработчик", en: "Flutter developer" } as L,
   tagline: {
-    ru: "Делаю продукт целиком: Flutter-приложения под iOS и Android, сайты с 3D и анимацией, нативное macOS-приложение - и сам выкатываю всё это в прод.",
-    en: "I build the whole product: Flutter apps for iOS and Android, websites with 3D and motion, a native macOS app - and I ship all of it to production myself.",
+    ru: "Приложения на Flutter под iOS и Android - от архитектуры до релиза. Умею и вокруг: сайты с 3D, нативный Swift, свой сервер и CI/CD. Поэтому довожу продукт до прода, а не до «у меня работает».",
+    en: "Flutter apps for iOS and Android - from architecture to release. I also cover what's around them: 3D websites, native Swift, my own server and CI/CD. So I take a product to production, not to \"works on my machine\".",
   } as L,
   shortBio: {
-    ru: "Product engineer из Санкт-Петербурга, студент ИТМО. Мобайл, веб, натив и деплой.",
-    en: "Product engineer from Saint Petersburg, ITMO student. Mobile, web, native and deploy.",
+    ru: "Flutter-разработчик из Санкт-Петербурга, студент ИТМО. Мобайл, веб, натив и деплой.",
+    en: "Flutter developer from Saint Petersburg, ITMO student. Mobile, web, native and deploy.",
   } as L,
   location: {
     ru: "Санкт-Петербург",
@@ -46,11 +46,18 @@ export const site = {
   githubUrl: "https://github.com/undemorbe",
   linkedinUrl: "https://www.linkedin.com/in/stankov-boris",
   hhUrl: "https://hh.kz/resume/89456e4eff10c661920039ed1f6b344e713554",
-  resumeUrl:
-    "https://drive.google.com/file/d/1Ag2p9i02TyCG4S95Gn93LD3-IXcocto_/view",
+  /** PDFs rendered from resume/ by `npm run resume`; served from public/. */
+  resumePdf: { ru: "/resume/Boris-Stankov-Flutter-RU.pdf", en: "/resume/Boris-Stankov-Flutter-EN.pdf" } as L,
   url: "https://undemorbe.github.io/Portfolio",
   avatar: "/images/boris.jpg",
 } as const;
+
+/** Proof in the first viewport: only numbers backed by the experience below. */
+export const heroStats: { value: string; label: L }[] = [
+  { value: "6", label: { ru: "команд и заказчиков с 2023 года", en: "teams and clients since 2023" } },
+  { value: "−50%", label: { ru: "время запуска приложения в Xouston", en: "app launch time at Xouston" } },
+  { value: "4", label: { ru: "проекта в проде прямо сейчас", en: "projects live right now" } },
+];
 
 /* ────────────────────────────────────────────────────────────
    Lines - the five disciplines, drawn as metro lines
@@ -75,7 +82,7 @@ export const lines: Line[] = [
       ru: "Основная линия. Flutter под iOS и Android: архитектура, состояние, производительность.",
       en: "The main line. Flutter for iOS and Android: architecture, state, performance.",
     },
-    skills: ["Flutter", "Dart", "BLoC / Cubit", "MobX", "GetIt", "GoRouter", "AutoRoute", "Drift", "Hive", "flutter_map", "Isolates", "DevTools", "intl / l10n"],
+    skills: ["Flutter", "Dart", "Clean Architecture", "BLoC / Cubit", "MobX", "MVVM", "GetIt", "GoRouter", "AutoRoute", "Navigator 2.0", "Drift", "Hive", "secure_storage", "flutter_map", "Rive / Lottie", "Local notifications", "Isolates", "DevTools", "intl / l10n"],
   },
   {
     id: "m2",
@@ -105,7 +112,7 @@ export const lines: Line[] = [
       ru: "Довожу до прода: свой VPS за nginx, CI/CD, релизы в сторы и на GitHub.",
       en: "I take it to production: my own VPS behind nginx, CI/CD, store and GitHub releases.",
     },
-    skills: ["GitHub Actions", "Docker", "nginx", "VPS", "TLS", "GitHub Pages", "Fastlane", "DMG-релизы"],
+    skills: ["Git", "GitHub Actions", "Docker", "nginx", "VPS", "TLS", "GitHub Pages", "Fastlane", "App Store / Google Play", "DMG-релизы"],
   },
   {
     id: "m5",
@@ -115,7 +122,7 @@ export const lines: Line[] = [
       ru: "Данные и realtime: Firebase, Supabase, REST, WebSockets, логи и мониторинг.",
       en: "Data and realtime: Firebase, Supabase, REST, WebSockets, logs and monitoring.",
     },
-    skills: ["Firebase Auth", "Firestore", "FCM", "Crashlytics", "Supabase", "REST", "Dio + Retrofit", "WebSockets", "freezed", "Talker"],
+    skills: ["Firebase Auth", "Firestore", "FCM", "Crashlytics", "Supabase", "REST", "Dio + Retrofit", "WebSockets", "json_serializable", "freezed", "Talker"],
   },
 ];
 
@@ -142,9 +149,11 @@ export type Project = {
   githubUrl?: string;
   liveUrl?: string;
   note?: L;
+  /** One measured result shown on the card face. */
+  metric?: { value: string; label: L };
 };
 
-export const projects: Project[] = [
+const allProjects: Project[] = [
   {
     slug: "wallpap",
     name: "Wallpap",
@@ -177,6 +186,7 @@ export const projects: Project[] = [
         "CI on macos-26 runners: build, signature check, DMG and a release per tag",
       ],
     },
+    metric: { value: "0", label: { ru: "фоновых процессов: обои играет сама macOS", en: "background processes: macOS plays the wallpaper itself" } },
     stack: ["Swift", "SwiftUI", "AppKit", "AVFoundation", "ExtensionKit", "GitHub Actions"],
     githubUrl: "https://github.com/undemorbe/wallpap",
   },
@@ -212,6 +222,7 @@ export const projects: Project[] = [
         "Deploy to GitHub Pages via Actions with an SPA fallback",
       ],
     },
+    metric: { value: "450", label: { ru: "кадров 3D-сцены, которые листаются скроллом", en: "3D frames scrubbed by scroll" } },
     stack: ["Vue 3", "Vite", "Three.js", "Canvas", "Vue Router", "GitHub Actions"],
     githubUrl: "https://github.com/undemorbe/budini-coffee",
     liveUrl: "https://undemorbe.github.io/budini-coffee/",
@@ -401,6 +412,7 @@ export const projects: Project[] = [
       ru: ["Legacy переведён на современный стек без остановки продукта"],
       en: ["Legacy moved to a modern stack without stopping the product"],
     },
+    metric: { value: "−50%", label: { ru: "время запуска после отложенной инициализации", en: "launch time after deferred initialisation" } },
     stack: ["Flutter", "Native", "AI", "Caching", "Code Review", "Agile"],
   },
   {
@@ -439,6 +451,7 @@ export const projects: Project[] = [
         "An architecture the team extended without rewriting the core",
       ],
     },
+    metric: { value: "−30%", label: { ru: "холодный старт за счёт разделения зависимостей", en: "cold start by splitting dependencies" } },
     stack: ["Flutter", "Clean Architecture", "MVVM", "flutter_map", "REST", "QR"],
     githubUrl: "https://github.com/undemorbe/Q-Story",
   },
@@ -509,10 +522,54 @@ export const projects: Project[] = [
         "Barber and client apps merged, admin split out",
       ],
     },
+    metric: { value: "20%+", label: { ru: "оптимизация базы данных", en: "database optimisation" } },
     stack: ["Flutter", "Firebase Auth", "Firestore", "BLoC", "GoRouter"],
     githubUrl: "https://github.com/undemorbe/barber_booker",
   },
+  {
+    slug: "korst",
+    name: "KORST",
+    tagline: {
+      ru: "Маркетплейс услуг без посредников: карточки, отклики, встроенный realtime-мессенджер и рейтинги. Весь Flutter-клиент написал я.",
+      en: "A service marketplace with no middleman: listings, responses, a built-in realtime messenger and ratings. I wrote the whole Flutter client.",
+    },
+    year: "2026",
+    status: { ru: "Стартап в паре · Flutter-клиент", en: "Two-person startup · Flutter client" },
+    lines: ["m1", "m5"],
+    problem: {
+      ru: "Агрегаторы услуг берут 15-30% комиссии, а переписка уходит в сторонние мессенджеры - контекст сделки теряется.",
+      en: "Service aggregators take a 15-30% fee, and chats move to outside messengers - the deal loses its context.",
+    },
+    solution: {
+      ru: "Мобильный клиент, где отклик сразу открывает чат по карточке: WebSocket-мессенджер с историей и фото, вход по телефону и OTP, отзывы и статусы сделки. Бэкенд делал напарник, клиент целиком - я.",
+      en: "A mobile client where a response opens a chat tied to the listing: a WebSocket messenger with history and photos, phone + OTP sign-in, reviews and deal statuses. My partner built the backend, I built the whole client.",
+    },
+    architecture: {
+      ru: "Clean Architecture по фичам, MobX-сторы на кодогенерации, GetIt и GoRouter. Единый HTTP-слой на Dio с автообновлением токена, Hive для офлайна и счётчиков непрочитанного.",
+      en: "Feature-based Clean Architecture, code-generated MobX stores, GetIt and GoRouter. One Dio HTTP layer with token refresh, Hive for offline state and unread counters.",
+    },
+    highlights: {
+      ru: [
+        "WebSocket-мессенджер: история с пагинацией, фото, правка и удаление, автореконнект",
+        "Вход по номеру телефона и OTP, автообновление access-токена",
+        "Deep links на карточки, push-уведомления и фоновые задачи",
+        "5 языков интерфейса, тёмная и светлая тема, unit- и golden-тесты",
+      ],
+      en: [
+        "A WebSocket messenger: paginated history, photos, edit and delete, auto-reconnect",
+        "Phone + OTP sign-in, automatic access-token refresh",
+        "Deep links to listings, push notifications and background tasks",
+        "5 UI languages, dark and light themes, unit and golden tests",
+      ],
+    },
+    stack: ["Flutter", "MobX", "GetIt", "GoRouter", "Dio", "WebSockets", "Hive", "workmanager"],
+    githubUrl: "https://github.com/undemorbe/KORST-project",
+  },
 ];
+
+/** Commercial work with measured results first: that's what a hiring team scans for. */
+const ORDER = ["xouston", "q-story", "korst", "pora", "wallpap", "budini-coffee", "flower-cup", "dirigible", "arys", "hornet", "tg-mini-app"];
+export const projects: Project[] = ORDER.map((slug) => allProjects.find((p) => p.slug === slug)!);
 
 /* ────────────────────────────────────────────────────────────
    Experience
@@ -589,7 +646,7 @@ export const experience: ExperienceItem[] = [
     company: "ЦСиГН",
     role: { ru: "Flutter-разработчик", en: "Flutter Developer" },
     location: { ru: "Санкт-Петербург · культура", en: "Saint Petersburg · culture" },
-    period: { ru: "Июн - Сен 2025", en: "Jun - Sep 2025" },
+    period: { ru: "Сен - Дек 2025", en: "Sep - Dec 2025" },
     duration: { ru: "4 мес", en: "4 mo" },
     summary: {
       ru: "Q-Story: история и пешие маршруты через QR и карту. Архитектура клиента - моя.",
@@ -599,12 +656,14 @@ export const experience: ExperienceItem[] = [
       ru: [
         "Спроектировал архитектуру клиента: Clean Architecture, feature-based",
         "QR, геолокация, карты и пешие маршруты, связка с backend API",
-        "Холодный старт быстрее примерно на 30%",
+        "Контент без сканирования: достаточно оказаться рядом с меткой",
+        "Холодный старт быстрее примерно на 30%: разделил зависимости и грузил их по мере надобности",
       ],
       en: [
         "Designed the client architecture: Clean Architecture, feature-based",
         "QR, geolocation, maps and walking routes, wired to the backend API",
-        "Cold start about 30% faster",
+        "Content without scanning: just being near the marker is enough",
+        "Cold start about 30% faster by splitting dependencies and loading them on demand",
       ],
     },
     tags: ["Clean Architecture", "Maps", "Performance", "REST"],
@@ -625,11 +684,13 @@ export const experience: ExperienceItem[] = [
         "Клиент, барбер и администратор с разграничением прав",
         "Бронирование с выбором услуг и realtime-расписанием",
         "Firebase (Auth, Firestore), база оптимизирована больше чем на 20%",
+        "Приложения клиента и барбера объединил, админ-панель вынес отдельно",
       ],
       en: [
         "Client, barber and admin with permission separation",
         "Booking with service selection and a realtime schedule",
         "Firebase (Auth, Firestore), database optimised by over 20%",
+        "Merged the client and barber apps, moved the admin panel out on its own",
       ],
     },
     tags: ["Firebase", "Realtime", "Roles", "BLoC"],
@@ -850,7 +911,7 @@ export type Advantage = { title: L; description: L };
 
 export const advantages: Advantage[] = [
   { title: { ru: "Отвечаю за продукт целиком", en: "I own the whole product" }, description: { ru: "Код, сборка, деплой, релиз. Понимаю, что происходит после «git push».", en: "Code, build, deploy, release. I know what happens after \"git push\"." } },
-  { title: { ru: "Быстро вхожу в чужой код", en: "I get into other people's code fast" }, description: { ru: "Шесть проектов и команд за три года. Незнакомый стек не пугает - Swift-приложение под macOS тому пример.", en: "Six projects and teams in three years. An unfamiliar stack doesn't scare me - a Swift macOS app is proof." } },
+  { title: { ru: "Быстро вхожу в чужой код", en: "I get into other people's code fast" }, description: { ru: "Шесть команд и заказчиков с 2023 года. Незнакомый стек не пугает - Swift-приложение под macOS тому пример.", en: "Six teams and clients since 2023. An unfamiliar stack doesn't scare me - a Swift macOS app is proof." } },
   { title: { ru: "Довожу до конца", en: "I finish what I start" }, description: { ru: "Не останавливаюсь на «вроде работает». Фича готова, когда она в проде.", en: "I don't stop at \"seems to work\". A feature is done when it's in production." } },
   { title: { ru: "Измеряю результат", en: "I measure results" }, description: { ru: "−50% к старту видно в профайлере, а не на словах.", en: "−50% startup shows up in the profiler, not just on paper." } },
   { title: { ru: "Делаю интерфейсы живыми", en: "I make interfaces feel alive" }, description: { ru: "Анимация, 3D, кастомные переходы - и без потери FPS.", en: "Motion, 3D, custom transitions - without dropping frames." } },
@@ -934,8 +995,8 @@ export const sections: Record<string, { title: L; description?: L }> = {
   contact: {
     title: { ru: "Следующая станция - ваш проект", en: "Next stop - your project" },
     description: {
-      ru: "Открыт к работе: вакансии, стажировки и проекты. Быстрее всего ответ в Telegram.",
-      en: "Open to work: jobs, internships and projects. Telegram gets the fastest reply.",
+      ru: "Открыт к работе: Flutter-разработчик в команду или проект под ключ. Быстрее всего ответ в Telegram.",
+      en: "Open to work: a Flutter developer for your team or a turnkey project. Telegram gets the fastest reply.",
     },
   },
 };
@@ -950,6 +1011,7 @@ export const announcements: L[] = [
   { ru: "dirigible.community - центр социальных практик", en: "dirigible.community - a social practice centre" },
   { ru: "Xouston - игры для памяти", en: "Xouston - games for memory" },
   { ru: "Q-Story - история города по QR", en: "Q-Story - city history by QR" },
+  { ru: "KORST - маркетплейс с живым чатом", en: "KORST - a marketplace with live chat" },
   { ru: "Конечная - ваш проект", en: "Terminus - your project" },
 ];
 
@@ -983,8 +1045,8 @@ export const ui = {
     en: "I came to mobile because an app is felt in your hand right away: it's either alive and responsive or it lags - nowhere to hide. Flutter let me own the whole experience with one codebase for iOS and Android.",
   } as L,
   aboutP2: {
-    ru: "За три года я прошёл путь от стажёра, который верстал экраны по Figma, до человека, который проектирует архитектуру клиента с нуля. Главное, что понял: большинство проблем рождается не в коде, а в решениях, принятых до него.",
-    en: "In three years I went from an intern building screens from Figma to someone who designs client architecture from scratch. The main lesson: most problems are born not in the code but in decisions made before it.",
+    ru: "С 2023 года я прошёл путь от стажёра, который верстал экраны по Figma, до человека, который проектирует архитектуру клиента с нуля. Главное, что понял: большинство проблем рождается не в коде, а в решениях, принятых до него.",
+    en: "Since 2023 I've gone from an intern building screens from Figma to someone who designs client architecture from scratch. The main lesson: most problems are born not in the code but in decisions made before it.",
   } as L,
   aboutP3: {
     ru: "В 2026-м линии разошлись: сайты с 3D-сценами для кофейни и эко-стартапа, нативное macOS-приложение на Swift, свои серверы за nginx. Мне нравится, когда результат можно потрогать - и измерить в профайлере.",
@@ -994,6 +1056,11 @@ export const ui = {
   factEducationValue: { ru: "ИТМО, прикладная информатика: мобильные и сетевые технологии (бакалавр, 2029)", en: "ITMO, Applied Informatics: mobile & network technologies (BSc, 2029)" } as L,
   factLanguages: { ru: "Языки", en: "Languages" } as L,
   factLanguagesValue: { ru: "Русский - родной · English - B2", en: "Russian - native · English - B2" } as L,
+  factFormat: { ru: "Формат", en: "Work format" } as L,
+  factFormatValue: {
+    ru: "Полная, частичная или проектная занятость · удалённо, гибрид или офис в Петербурге · разрешение на работу в России и Казахстане",
+    en: "Full-time, part-time or project work · remote, hybrid or on-site in Saint Petersburg · work permit for Russia and Kazakhstan",
+  } as L,
   factEnv: { ru: "Рабочее место", en: "Setup" } as L,
   factEnvValue: { ru: "macOS · Xcode, Android Studio, VS Code · сборка и подпись iOS, Android, macOS", en: "macOS · Xcode, Android Studio, VS Code · iOS, Android and macOS build & signing" } as L,
   contactNote: { ru: "Обычно отвечаю в течение дня.", en: "I usually reply within a day." } as L,
@@ -1002,6 +1069,8 @@ export const ui = {
   allServices: { ru: "Все услуги подробно", en: "All services in detail" } as L,
   resumeHh: { ru: "Резюме на hh.kz", en: "Resume on hh.kz" } as L,
   resumePdf: { ru: "Резюме PDF", en: "Resume PDF" } as L,
+  resume: { ru: "Резюме", en: "Resume" } as L,
+  resumeFile: { ru: "PDF, русский", en: "PDF, English" } as L,
   topLangsLabel: { ru: "Языки в репозиториях", en: "Languages in repos" } as L,
   copied: { ru: "Скопировано", en: "Copied" } as L,
   phone: { ru: "Телефон", en: "Phone" } as L,
