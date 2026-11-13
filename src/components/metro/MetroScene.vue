@@ -298,7 +298,8 @@ onMounted(() => {
 
   /* Sizing - fit ~15 map units across whatever aspect the canvas has */
   let RADIUS = 17;
-  const labelW: number[] = []; // cached label widths, cleared on resize
+  const labelW: number[] = []; // cached label sizes, cleared on resize
+  const labelH: number[] = [];
   // On phones crop the far ends a little so stations stay readable.
   const fitRadius = () => {
     const half = el.clientWidth < 640 ? 6.1 : 6.3;
@@ -438,15 +439,27 @@ onMounted(() => {
     // HTML labels follow their stations
     const w = el.clientWidth;
     const h = el.clientHeight;
+    const placed: { l: number; r: number; t: number; b: number }[] = [];
     stationObjs.forEach((so, i) => {
       const node = labelEls.value[i];
       if (!node) return;
       tmp.copy(so.top).project(camera);
       // keep labels inside the page gutter even where the lines run off the canvas
-      if (!labelW[i]) labelW[i] = node.offsetWidth;
+      if (!labelW[i]) {
+        labelW[i] = node.offsetWidth;
+        labelH[i] = node.offsetHeight;
+      }
       const pad = (w < 640 ? 20 : 6) + labelW[i] / 2;
       const x = Math.min(w - pad, Math.max(pad, (tmp.x * 0.5 + 0.5) * w));
-      const y = (-tmp.y * 0.5 + 0.5) * h;
+      let y = (-tmp.y * 0.5 + 0.5) * h;
+      // a label that would cover a neighbour's drops below its station instead
+      const box = (top: number) => ({ l: x - labelW[i] / 2 - 2, r: x + labelW[i] / 2 + 2, t: top - labelH[i], b: top });
+      let b = box(y);
+      if (placed.some((p) => b.l < p.r && b.r > p.l && b.t < p.b && b.b > p.t)) {
+        y += labelH[i] + (w < 640 ? 22 : 30);
+        b = box(y);
+      }
+      placed.push(b);
       node.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) translate(-50%, -100%)`;
       node.style.opacity = introT > so.delay + 0.3 && tmp.z < 1 ? "1" : "0";
     });

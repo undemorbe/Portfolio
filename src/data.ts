@@ -54,9 +54,9 @@ export const site = {
 
 /** Proof in the first viewport: only numbers backed by the experience below. */
 export const heroStats: { value: string; label: L }[] = [
-  { value: "6", label: { ru: "команд и заказчиков с 2023 года", en: "teams and clients since 2023" } },
+  { value: "7", label: { ru: "команд и заказчиков с 2023 года", en: "teams and clients since 2023" } },
   { value: "−50%", label: { ru: "время запуска приложения в Xouston", en: "app launch time at Xouston" } },
-  { value: "4", label: { ru: "проекта в проде прямо сейчас", en: "projects live right now" } },
+  { value: "590", label: { ru: "тестов в Q-Story и Neiro Peiro", en: "tests in Q-Story and Neiro Peiro" } },
 ];
 
 /* ────────────────────────────────────────────────────────────
@@ -82,7 +82,7 @@ export const lines: Line[] = [
       ru: "Основная линия. Flutter под iOS и Android: архитектура, состояние, производительность.",
       en: "The main line. Flutter for iOS and Android: architecture, state, performance.",
     },
-    skills: ["Flutter", "Dart", "Clean Architecture", "BLoC / Cubit", "MobX", "MVVM", "GetIt", "GoRouter", "AutoRoute", "Navigator 2.0", "Drift", "Hive", "secure_storage", "flutter_map", "Rive / Lottie", "Local notifications", "Isolates", "DevTools", "intl / l10n"],
+    skills: ["Flutter", "Dart", "Clean Architecture", "BLoC / Cubit", "MobX", "MVVM", "GetIt", "GoRouter", "AutoRoute", "Navigator 2.0", "Drift", "Hive", "secure_storage", "flutter_map", "Rive / Lottie", "Local notifications", "Isolates", "DevTools", "intl / l10n", "sembast", "Flutter Web / Wasm", "Geolocation"],
   },
   {
     id: "m2",
@@ -92,7 +92,7 @@ export const lines: Line[] = [
       ru: "Сайты и веб-приложения: Vue, 3D на Three.js, анимация на canvas и SVG.",
       en: "Websites and web apps: Vue, 3D with Three.js, canvas and SVG motion.",
     },
-    skills: ["Vue 3", "TypeScript", "Vite", "Three.js", "Canvas", "SVG-анимация", "Tailwind", "Telegram Mini Apps"],
+    skills: ["Vue 3", "TypeScript", "Vite", "Pinia", "Three.js", "WebGL", "Canvas", "SVG-анимация", "Tailwind", "Vitest", "Telegram Mini Apps"],
   },
   {
     id: "m3",
@@ -112,7 +112,7 @@ export const lines: Line[] = [
       ru: "Довожу до прода: свой VPS за nginx, CI/CD, релизы в сторы и на GitHub.",
       en: "I take it to production: my own VPS behind nginx, CI/CD, store and GitHub releases.",
     },
-    skills: ["Git", "GitHub Actions", "Docker", "nginx", "VPS", "TLS", "GitHub Pages", "Fastlane", "App Store / Google Play", "DMG-релизы"],
+    skills: ["Git", "GitHub Actions", "Docker", "nginx", "VPS", "TLS", "GitHub Pages", "Fastlane", "App Store / Google Play", "DMG-релизы", "Cloudflare", "systemd / supervisor", "ufw / fail2ban"],
   },
   {
     id: "m5",
@@ -122,7 +122,7 @@ export const lines: Line[] = [
       ru: "Данные и realtime: Firebase, Supabase, REST, WebSockets, логи и мониторинг.",
       en: "Data and realtime: Firebase, Supabase, REST, WebSockets, logs and monitoring.",
     },
-    skills: ["Firebase Auth", "Firestore", "FCM", "Crashlytics", "Supabase", "REST", "Dio + Retrofit", "WebSockets", "json_serializable", "freezed", "Talker"],
+    skills: ["Firebase Auth", "Firestore", "FCM", "Crashlytics", "Supabase", "Python", "Node.js", "SQL / MySQL", "SQLite", "REST", "SSE", "Dio + Retrofit", "WebSockets", "json_serializable", "freezed", "Talker"],
   },
 ];
 
@@ -194,11 +194,11 @@ const allProjects: Project[] = [
     slug: "budini-coffee",
     name: "Budini Coffee",
     tagline: {
-      ru: "Сайт кофейни «Будини»: 3D scroll-video на Three.js и меню с конструктором напитка, где стакан наполняется на глазах.",
-      en: "A site for Budini coffee shop: a Three.js scroll-video and a menu with a drink builder where the cup fills up before your eyes.",
+      ru: "Концепт сайта кофейни «Будини»: 3D scroll-video на Three.js и меню с конструктором напитка, где стакан наполняется на глазах.",
+      en: "A concept site for Budini coffee shop: a Three.js scroll-video and a menu with a drink builder where the cup fills up before your eyes.",
     },
     year: "2026",
-    status: { ru: "Сайт · в проде", en: "Website · live" },
+    status: { ru: "Концепт · онлайн", en: "Concept · live" },
     lines: ["m2", "m4"],
     problem: {
       ru: "Кофейне нужен сайт, который запоминается с первого экрана, но при этом остаётся удобным: меню, адреса, предзаказ.",
@@ -226,6 +226,84 @@ const allProjects: Project[] = [
     stack: ["Vue 3", "Vite", "Three.js", "Canvas", "Vue Router", "GitHub Actions"],
     githubUrl: "https://github.com/undemorbe/budini-coffee",
     liveUrl: "https://undemorbe.github.io/budini-coffee/",
+  },
+  {
+    slug: "ruai",
+    name: "ruAI",
+    tagline: {
+      ru: "Фронтенд AI-чата на русском без VPN: 7 вариантов лендинга, чат со стримингом ответа, тарифы и оформление оплаты.",
+      en: "The frontend of a Russian-language AI chat without a VPN: 7 landing variants, a streaming chat, plans and checkout.",
+    },
+    year: "2026",
+    status: { ru: "В разработке · демо онлайн", en: "In progress · live demo" },
+    lines: ["m2", "m4"],
+    problem: {
+      ru: "AI-сервису нужен лендинг, который не похож на десятки одинаковых, и сразу рабочий клиент: чат, тарифы, оплата. Бэкенда ещё нет, а фронт должен быть к нему готов.",
+      en: "An AI service needs a landing page unlike dozens of identical ones, plus a working client right away: chat, plans, payment. There's no backend yet, and the frontend has to be ready for it.",
+    },
+    solution: {
+      ru: "7 вариантов первого экрана: от 3D-сферы на WebGL-шейдере до 14 000 частиц, которые собираются в слова, и 3D-клавиатуры, переводящей английскую раскладку в русскую. Чат со стримингом ответа, тарифы и оформление оплаты картой, СБП и SberPay.",
+      en: "7 first-screen variants: from a 3D sphere on a WebGL shader to 14,000 particles forming words and a 3D keyboard that converts the English layout to Russian. A streaming chat, plans and checkout by card, SBP and SberPay.",
+    },
+    architecture: {
+      ru: "Сервисы описаны контрактами AuthService / ChatService / BillingService: сейчас работают моки в браузере, REST-реализация включается переменной окружения - интерфейс при этом не меняется. Состояние на Pinia, three.js грузится отдельным чанком только для 3D-вариантов.",
+      en: "Services are defined as AuthService / ChatService / BillingService contracts: browser mocks run today, and the REST implementation switches on with an env variable - the UI doesn't change. State on Pinia; three.js loads as a separate chunk only for the 3D variants.",
+    },
+    highlights: {
+      ru: [
+        "7 лендингов: ?v=1…7 или переключатель внизу, выбор запоминается",
+        "3D на three.js: шейдерная сфера, 14 000 частиц, клавиатура-переводчик",
+        "Чат со стримингом ответа, оформление оплаты и поллинг статуса платежа",
+        "TypeScript, Pinia, Vue Router, Vitest, ESLint, CI и деплой на GitHub Pages",
+      ],
+      en: [
+        "7 landings: ?v=1…7 or a switcher at the bottom, the choice is remembered",
+        "3D on three.js: a shader sphere, 14,000 particles, a layout-converting keyboard",
+        "A streaming chat, checkout and payment status polling",
+        "TypeScript, Pinia, Vue Router, Vitest, ESLint, CI and GitHub Pages deploy",
+      ],
+    },
+    metric: { value: "7", label: { ru: "вариантов лендинга - от шейдера до 14 000 частиц", en: "landing variants - from a shader to 14,000 particles" } },
+    stack: ["Vue 3", "TypeScript", "Vite", "Pinia", "Three.js", "Vitest", "GitHub Actions"],
+    githubUrl: "https://github.com/undemorbe/ruAI",
+    liveUrl: "https://undemorbe.github.io/ruAI/",
+  },
+  {
+    slug: "frontend-roadmap",
+    name: "Frontend Metro",
+    tagline: {
+      ru: "Учебник фронтенда в виде схемы метро: HTML, CSS, JavaScript, инструменты и Vue. 51 урок с живыми примерами и 165 задач с автопроверкой прямо в браузере.",
+      en: "A frontend textbook drawn as a metro map: HTML, CSS, JavaScript, tooling and Vue. 51 lessons with live examples and 165 tasks checked right in the browser.",
+    },
+    year: "2026",
+    status: { ru: "Учебный сайт · в проде", en: "Learning site · live" },
+    lines: ["m2", "m4"],
+    problem: {
+      ru: "Новичку во фронтенде трудно понять, что учить и в каком порядке, а теория без практики не держится.",
+      en: "Frontend beginners struggle to know what to learn and in what order, and theory without practice doesn't stick.",
+    },
+    solution: {
+      ru: "Каждая станция - урок с живыми примерами и задачами, которые проверяются прямо на странице: код запускается в изолированном iframe. Уроки пишутся в Markdown со своими блоками для задач, превью и подсказок, а линии и пересадки показывают, что из чего вытекает.",
+      en: "Each station is a lesson with live examples and tasks checked right on the page: code runs in an isolated iframe. Lessons are written in Markdown with custom blocks for tasks, previews and tips, and the lines and transfers show what leads to what.",
+    },
+    highlights: {
+      ru: [
+        "5 линий: HTML, CSS, JavaScript, инструменты (npm, DevTools, Git, Vite) и Vue",
+        "Песочница в iframe с режимами web, js, vue, sfc и config",
+        "Свой формат уроков на Markdown: задачи, живые превью, врезки",
+        "Самопроверка в CI: стартовый код каждой задачи должен падать, эталон - проходить",
+      ],
+      en: [
+        "5 lines: HTML, CSS, JavaScript, tooling (npm, DevTools, Git, Vite) and Vue",
+        "An iframe sandbox with web, js, vue, sfc and config modes",
+        "A custom Markdown lesson format: tasks, live previews, callouts",
+        "Self-test in CI: each task's starter code must fail and the reference must pass",
+      ],
+    },
+    metric: { value: "165", label: { ru: "задач с автопроверкой в браузере", en: "tasks auto-checked in the browser" } },
+    stack: ["Vue 3", "Vite", "JavaScript", "Markdown", "iframe sandbox", "GitHub Actions"],
+    githubUrl: "https://github.com/undemorbe/frontend-roadmap",
+    liveUrl: "https://undemorbe.github.io/frontend-roadmap/",
   },
   {
     slug: "flower-cup",
@@ -344,37 +422,57 @@ const allProjects: Project[] = [
   },
   {
     slug: "tg-mini-app",
-    name: "Telegram Mini App",
+    name: "Neiro Peiro",
     tagline: {
-      ru: "Mini App внутри Telegram с собственным деплоем на облачный сервер за nginx.",
-      en: "A Mini App inside Telegram with my own deployment to a cloud server behind nginx.",
+      ru: "Telegram Mini App для AI-бота: 17 нейросетей для фото, видео и музыки, чат с LLM, тренды и оплата. Поверх работающего бота - без единой правки в его коде.",
+      en: "A Telegram Mini App for an AI bot: 17 neural networks for photo, video and music, an LLM chat, trends and payments. Built on top of a live bot - without touching its code.",
     },
     year: "2026",
-    status: { ru: "Свой сервер · в проде", en: "Own server · live" },
-    lines: ["m2", "m4"],
+    status: { ru: "Коммерческий · в проде", en: "Commercial · live" },
+    lines: ["m1", "m2", "m4"],
     problem: {
-      ru: "Хотелось отвечать не только за клиент, но и за инфраструктуру: собрать, задеплоить и держать в проде без «отдам девопсу».",
-      en: "I wanted to own more than the client: build, deploy and keep it running in production without handing it to a devops.",
+      ru: "У заказчика работающий AI-бот со своей базой, ценами и оплатой. Генерировать в чате неудобно: нет галереи, трендов и истории. Нужно приложение, которое не ломает бота и не дублирует его логику.",
+      en: "The client has a working AI bot with its own database, pricing and payments. Generating in a chat is clumsy: no gallery, trends or history. They needed an app that neither breaks the bot nor duplicates its logic.",
     },
     solution: {
-      ru: "Собрал Mini App и развернул на облачном VPS: nginx как reverse-proxy с TLS, раздача статики, автоматический выкат. Разобрался с доменом и сертификатами.",
-      en: "Built the Mini App and deployed it to a cloud VPS: nginx as a reverse proxy with TLS, static serving, automated releases. Sorted out the domain and certificates.",
+      ru: "Flutter Web-клиент внутри Telegram и мост на Python, который подключает модули бота напрямую: те же цены, баланс, MySQL и платёжные драйверы. Node-сервер отдаёт ленту трендов, аналитику, рассылки и веб-админку. Всё развёрнуто на VPS заказчика за nginx и Cloudflare.",
+      en: "A Flutter Web client inside Telegram and a Python bridge that loads the bot's modules directly: the same prices, balance, MySQL and payment drivers. A Node server runs the trends feed, analytics, broadcasts and a web admin. All deployed on the client's VPS behind nginx and Cloudflare.",
+    },
+    architecture: {
+      ru: "Три сервиса за nginx: Flutter Web на WebAssembly, мост на Python поверх кода бота (генерации, LLM-чат с потоковыми ответами, оплата) и Node без зависимостей (лента, аналитика, рассылки, админка на SQLite). Бот остаётся источником правды - мост импортирует его модули, а не копирует логику.",
+      en: "Three services behind nginx: Flutter Web on WebAssembly, a Python bridge over the bot's code (generation, a streaming LLM chat, payments) and a zero-dependency Node server (feed, analytics, broadcasts, admin on SQLite). The bot stays the source of truth - the bridge imports its modules instead of copying its logic.",
     },
     highlights: {
       ru: [
-        "Сервер с нуля на облачном VPS",
-        "nginx: TLS-сертификаты, статика, маршрутизация",
-        "Автоматический выкат новой версии",
-        "Интеграция с Telegram Mini App API",
+        "17 нейросетей из бота: Nano Banana, Veo, Kling, Sora, Suno, Midjourney и другие - цены и списание по правилам бота",
+        "LLM-чат с потоковыми ответами, голосом и файлами; результаты генераций в своём архиве - ссылки не протухают",
+        "Оплата Telegram Stars и FreeKassa, промокоды, реферальная программа с выводом средств",
+        "Веб-админка: роли, аналитика с воронкой оплаты и удержанием D1/D7/D30, рассылки, тренды",
+        "Клоны бота: брендированные зеркала-витрины мини-аппа с зашифрованными токенами",
+        "Бот поддержки и лендинг с 3D-сценой на Three.js",
       ],
       en: [
-        "A server from scratch on a cloud VPS",
-        "nginx: TLS certificates, static files, routing",
-        "Automated release of new versions",
-        "Integration with the Telegram Mini App API",
+        "17 neural networks from the bot: Nano Banana, Veo, Kling, Sora, Suno, Midjourney and more - priced and charged by the bot's rules",
+        "An LLM chat with streaming answers, voice and files; generation results in our own archive - links never expire",
+        "Telegram Stars and FreeKassa payments, promo codes, a referral program with withdrawals",
+        "A web admin: roles, analytics with a payment funnel and D1/D7/D30 retention, broadcasts, trends",
+        "Bot clones: branded mirror storefronts for the mini app with encrypted tokens",
+        "A support bot and a landing page with a Three.js 3D scene",
       ],
     },
-    stack: ["Telegram Mini App", "nginx", "Docker", "VPS", "CI/CD"],
+    results: {
+      ru: [
+        "Холодный старт на 4G легче на 45% (5,3 → 2,9 МБ) и без единого внешнего запроса",
+        "Около 250 тестов на мосту, сервере и клиенте",
+      ],
+      en: [
+        "Cold start on 4G 45% lighter (5.3 → 2.9 MB) with zero external requests",
+        "About 250 tests across the bridge, the server and the client",
+      ],
+    },
+    metric: { value: "−45%", label: { ru: "вес холодного старта на 4G", en: "cold-start payload on 4G" } },
+    stack: ["Flutter Web", "WebAssembly", "Python", "Node.js", "MySQL", "SQLite", "nginx", "Cloudflare"],
+    liveUrl: "https://neiropeiro.com",
   },
   {
     slug: "xouston",
@@ -419,40 +517,48 @@ const allProjects: Project[] = [
     slug: "q-story",
     name: "Q-Story",
     tagline: {
-      ru: "История и наука города: сканируешь QR у памятного места - получаешь историю, карта строит пешие маршруты.",
-      en: "A city's history and science: scan a QR at a landmark to get its story, and the map builds walking routes.",
+      ru: "Путеводитель по историческим местам вокруг: открытые базы историков и краеведов на одной карте, поиск места пешком и статистика прогулок. Без своего сервера.",
+      en: "A guide to the historical places around you: open data from historians and local enthusiasts on one map, finding places on foot and walk stats. No server of its own.",
     },
-    year: "2025",
-    status: { ru: "Коммерческий · ЦСиГН", en: "Commercial · CSiGN" },
+    year: "2026",
+    status: { ru: "ЦСиГН · v1.0 без бэкенда", en: "CSiGN · v1.0, no backend" },
     lines: ["m1", "m5"],
     problem: {
-      ru: "Памятные места «немые»: рядом нет контекста, а маршруты статичны и не привязаны к геолокации.",
-      en: "Landmarks are \"silent\": no context nearby, and routes are static and not tied to geolocation.",
+      ru: "Сведения о памятных местах уже собраны, но разбросаны по PastVu, Википедии, OSM и другим базам. А свой сервер с контентом - это расходы, поддержка и точка отказа.",
+      en: "Facts about historic places already exist, but they're scattered across PastVu, Wikipedia, OSM and other databases. And a server of your own means costs, upkeep and a single point of failure.",
     },
     solution: {
-      ru: "Клиент со сканированием QR, интерактивной картой и пешими маршрутами между научными точками. Информацию можно получить и просто находясь рядом с меткой.",
-      en: "A client with QR scanning, an interactive map and walking routes between science spots. You also get info just by being near a tag.",
+      ru: "Начинали как гид по местам российских учёных со своим сервером и QR-табличками. В версии 1.0 я перевёл приложение на 6 открытых источников: места сводятся на одну карту, выбираешь цель - приложение ведёт к ней, считает шаги и путь и засчитывает находку по геозоне. Вся личная статистика хранится только на телефоне.",
+      en: "It started as a guide to places tied to Russian scientists, with its own server and QR plaques. In v1.0 I moved the app to 6 open sources: places land on one map, you pick a target, the app guides you, counts steps and distance, and logs the find by geofence. All personal stats stay on the phone.",
     },
     architecture: {
-      ru: "Спроектировал архитектуру клиента с нуля: Clean Architecture + feature-based, изолированный домен, MVVM, REST-бэкенд.",
-      en: "Designed the client architecture from scratch: Clean Architecture + feature-based, an isolated domain, MVVM, a REST backend.",
+      ru: "Clean Architecture по фичам (11 модулей), MobX, GetIt, GoRouter. Репозиторий мест опрашивает источники параллельно, кэширует на 12 часов и сливает дубли между базами; новый источник - один класс с двумя методами. Домен на чистом Dart, ошибки через Result / Failure, локальное хранилище на sembast.",
+      en: "Feature-based Clean Architecture (11 modules), MobX, GetIt, GoRouter. The places repository queries sources in parallel, caches for 12 hours and merges duplicates across databases; a new source is one class with two methods. Pure-Dart domain, errors via Result / Failure, local storage on sembast.",
     },
     highlights: {
       ru: [
-        "Холодный старт быстрее на 30% за счёт разделения зависимостей",
-        "Карта с точками наследия и построением пеших маршрутов",
-        "QR и информация по близости к метке",
-        "Архитектура, в которую команда добавляла фичи без переписывания ядра",
+        "Отказ от бэкенда: PastVu, Википедия, Wikidata, OpenStreetMap, OpenHistoricalMap и Wiki Loves Monuments вместо своего сервера",
+        "Карта с кластерами и фильтрами, трекинг маршрута, в том числе в фоне",
+        "Поиск места: компас, оценка шагов и времени по реальной скорости, засчитывание по геозоне",
+        "Локальная статистика: шагомер, серии, разведанная площадь, 16 достижений, экспорт в JSON",
+        "QR своего формата и распознавание ссылок Википедии, Wikidata, OSM и PastVu",
+        "Около 340 тестов, CI и подписанный релиз 1.0 на GitHub Actions",
       ],
       en: [
-        "Cold start 30% faster by splitting dependencies",
-        "A map with heritage points and walking routes",
-        "QR and info by proximity to a tag",
-        "An architecture the team extended without rewriting the core",
+        "No backend: PastVu, Wikipedia, Wikidata, OpenStreetMap, OpenHistoricalMap and Wiki Loves Monuments instead of a server",
+        "A clustered, filterable map and route tracking, including in the background",
+        "Finding a place: compass, step and time estimates from real walking speed, geofence check-in",
+        "On-device stats: pedometer, streaks, explored area, 16 achievements, JSON export",
+        "Its own QR format plus recognition of Wikipedia, Wikidata, OSM and PastVu links",
+        "About 340 tests, CI and a signed 1.0 release on GitHub Actions",
       ],
     },
-    metric: { value: "−30%", label: { ru: "холодный старт за счёт разделения зависимостей", en: "cold start by splitting dependencies" } },
-    stack: ["Flutter", "Clean Architecture", "MVVM", "flutter_map", "REST", "QR"],
+    results: {
+      ru: ["Ни сервера, ни аккаунтов, ни аналитики: приложению нечему падать, а данные пользователя не покидают устройство"],
+      en: ["No server, no accounts, no analytics: nothing to go down, and user data never leaves the device"],
+    },
+    metric: { value: "6", label: { ru: "открытых баз данных вместо своего сервера", en: "open databases instead of a server" } },
+    stack: ["Flutter", "MobX", "GetIt", "GoRouter", "flutter_map", "sembast", "Dio", "GitHub Actions"],
     githubUrl: "https://github.com/undemorbe/Q-Story",
   },
   {
@@ -568,7 +674,7 @@ const allProjects: Project[] = [
 ];
 
 /** Commercial work with measured results first: that's what a hiring team scans for. */
-const ORDER = ["xouston", "q-story", "korst", "pora", "wallpap", "budini-coffee", "flower-cup", "dirigible", "arys", "hornet", "tg-mini-app"];
+const ORDER = ["tg-mini-app", "xouston", "q-story", "korst", "pora", "wallpap", "budini-coffee", "ruai", "frontend-roadmap", "flower-cup", "dirigible", "arys", "hornet"];
 export const projects: Project[] = ORDER.map((slug) => allProjects.find((p) => p.slug === slug)!);
 
 /* ────────────────────────────────────────────────────────────
@@ -590,35 +696,97 @@ export type ExperienceItem = {
 
 export const experience: ExperienceItem[] = [
   {
-    company: "dirigible.community",
-    role: { ru: "Веб-разработчик", en: "Web Developer" },
-    location: { ru: "Удалённо · НКО", en: "Remote · NGO" },
-    period: { ru: "2026", en: "2026" },
-    duration: { ru: "", en: "" },
+    company: "Neiro Peiro",
+    role: { ru: "Flutter / full-stack разработчик", en: "Flutter / Full-stack Developer" },
+    location: { ru: "Санкт-Петербург · AI-сервис", en: "Saint Petersburg · AI service" },
+    period: { ru: "Авг - Ноя 2026", en: "Aug - Nov 2026" },
+    duration: { ru: "4 мес", en: "4 mo" },
     summary: {
-      ru: "Новый сайт АНО «Дирижабль» и переезд с конструктора на свой стек.",
-      en: "A new site for the Dirigible NGO and a move off a site builder to my own stack.",
+      ru: "Telegram Mini App для AI-бота: клиент, бэкенд, админка и деплой - целиком мои.",
+      en: "A Telegram Mini App for an AI bot: client, backend, admin and deploy - all mine.",
     },
     points: {
       ru: [
-        "Написал статический генератор на Python и дизайн-систему «Вязаное полотно»",
-        "Перенёс контент с Craftum и настроил редиректы",
-        "Настроил автодеплой и валидацию сборки",
+        "Flutter Web-клиент на WebAssembly: студия генераций, LLM-чат, лента трендов, оплата",
+        "Мост на Python поверх кода бота: 17 нейросетей, цены и списание по его правилам, Telegram Stars и FreeKassa",
+        "Node-сервер и веб-админка: роли, аналитика, рассылки, клоны бота",
+        "Холодный старт на 4G легче на 45% (5,3 → 2,9 МБ) и без внешних запросов",
+        "Деплой на VPS: nginx, Cloudflare, supervisor и systemd, защита сервера; около 250 тестов",
       ],
       en: [
-        "Wrote a Python static generator and the \"knitted fabric\" design system",
-        "Moved the content off Craftum and set up redirects",
-        "Set up auto-deploy and build validation",
+        "A Flutter Web client on WebAssembly: generation studio, LLM chat, trends feed, payments",
+        "A Python bridge over the bot's code: 17 neural networks, prices and charging by its rules, Telegram Stars and FreeKassa",
+        "A Node server and web admin: roles, analytics, broadcasts, bot clones",
+        "Cold start on 4G 45% lighter (5.3 → 2.9 MB) with no external requests",
+        "Deploy on a VPS: nginx, Cloudflare, supervisor and systemd, server hardening; about 250 tests",
       ],
     },
-    tags: ["Python", "SVG", "Migration", "Deploy"],
+    tags: ["Flutter Web", "Python", "Node.js", "Payments"],
+    line: "m1",
+    url: "https://neiropeiro.com",
+  },
+  {
+    company: "Freelance",
+    role: { ru: "Веб-разработчик (Vue / Vite / Three.js)", en: "Web Developer (Vue / Vite / Three.js)" },
+    location: { ru: "Удалённо · сайты под ключ", en: "Remote · turnkey websites" },
+    period: { ru: "Авг 2026 - сейчас", en: "Aug 2026 - now" },
+    duration: { ru: "", en: "" },
+    summary: {
+      ru: "Сайты и веб-приложения под ключ: от дизайна и 3D-графики до домена и автодеплоя. Работаю с заказчиками напрямую.",
+      en: "Turnkey websites and web apps: from design and 3D to the domain and auto-deploy. I work with clients directly.",
+    },
+    points: {
+      ru: [
+        "dirigible.community: перенёс сайт НКО с Craftum на свой генератор на Python, дизайн-система, валидатор сборки, редиректы",
+        "annasilni.com (Tilda): аудит, адаптив 9 страниц на 8 ширинах без единой проблемы, английская версия из 8 страниц",
+        "ruAI: 7 вариантов лендинга на WebGL и three.js, чат со стримингом, оплата картой, СБП и SberPay",
+        "Flower Cup, Frontend Metro, концепт Будини: процедурное 3D, учебник со 165 задачами, 3D scroll-video",
+        "Деплой на GitHub Pages и VPS за nginx, CI/CD на GitHub Actions",
+      ],
+      en: [
+        "dirigible.community: moved an NGO site off Craftum onto my own Python generator, design system, build validator, redirects",
+        "annasilni.com (Tilda): audit, 9 pages made responsive at 8 widths with zero issues, an 8-page English version",
+        "ruAI: 7 landing variants with WebGL and three.js, a streaming chat, card, SBP and SberPay checkout",
+        "Flower Cup, Frontend Metro, the Budini concept: procedural 3D, a textbook with 165 tasks, a 3D scroll-video",
+        "Deploy to GitHub Pages and a VPS behind nginx, CI/CD on GitHub Actions",
+      ],
+    },
+    tags: ["Vue 3", "Three.js", "Tilda", "Deploy"],
     line: "m2",
-    url: "https://dirigible.community",
+  },
+  {
+    company: "ЦСиГН",
+    role: { ru: "Flutter-разработчик", en: "Flutter Developer" },
+    location: { ru: "Санкт-Петербург · культура", en: "Saint Petersburg · culture" },
+    period: { ru: "Янв - Май 2026", en: "Jan - May 2026" },
+    duration: { ru: "5 мес", en: "5 mo" },
+    summary: {
+      ru: "Q-Story: путеводитель по историческим местам. Единственный мобильный разработчик - довёл до версии 1.0 и избавил от собственного сервера.",
+      en: "Q-Story: a guide to historical places. The only mobile developer - took it to v1.0 and got rid of its own server.",
+    },
+    points: {
+      ru: [
+        "Спроектировал клиент с нуля: Clean Architecture по фичам, MobX, GetIt, GoRouter",
+        "Перевёл приложение с собственного бэкенда на 6 открытых баз: параллельные запросы, кэш, слияние дублей",
+        "Карта, фоновый трекинг маршрута, поиск места с компасом и засчитыванием по геозоне",
+        "Холодный старт быстрее примерно на 30%: разделил зависимости и грузил их по мере надобности",
+        "Около 340 тестов, CI и подписанный релиз 1.0 на GitHub Actions",
+      ],
+      en: [
+        "Designed the client from scratch: feature-based Clean Architecture, MobX, GetIt, GoRouter",
+        "Moved the app off its own backend onto 6 open databases: parallel requests, caching, duplicate merging",
+        "A map, background route tracking, finding a place with a compass and geofence check-in",
+        "Cold start about 30% faster by splitting dependencies and loading them on demand",
+        "About 340 tests, CI and a signed 1.0 release on GitHub Actions",
+      ],
+    },
+    tags: ["Clean Architecture", "Open data", "Maps", "Performance"],
+    line: "m1",
   },
   {
     company: "Xouston",
     role: { ru: "Flutter-разработчик", en: "Flutter Developer" },
-    location: { ru: "Фриланс · медтех", en: "Freelance · medtech" },
+    location: { ru: "Медтех · соцзащита", en: "Medtech · social care" },
     period: { ru: "Дек 2025 - Май 2026", en: "Dec 2025 - May 2026" },
     duration: { ru: "6 мес", en: "6 mo" },
     summary: {
@@ -630,43 +798,18 @@ export const experience: ExperienceItem[] = [
         "Перенёс игровые механики из WebView в нативный Flutter",
         "Водный баланс, рекомендации рецептов, ИИ и аналитика",
         "Отложенный запуск: старт быстрее на 50%; кеширование: до +30% к производительности",
-        "Рефакторинг legacy, код-ревью, Agile и прямой контакт с заказчиком",
+        "Рефакторинг legacy без остановки продукта, код-ревью, двухнедельные спринты",
+        "Интерфейс под аудиторию 60+: крупные элементы, простая навигация, понятная обратная связь",
       ],
       en: [
         "Moved game mechanics from WebView into native Flutter",
         "Water balance, recipe suggestions, AI and analytics",
         "Deferred startup: 50% faster launch; caching: up to +30% performance",
-        "Legacy refactoring, code reviews, Agile and direct client contact",
+        "Legacy refactoring without stopping the product, code reviews, two-week sprints",
+        "UI for a 60+ audience: large elements, simple navigation, clear feedback",
       ],
     },
     tags: ["Flutter", "AI", "Legacy → Modern", "Caching"],
-    line: "m1",
-  },
-  {
-    company: "ЦСиГН",
-    role: { ru: "Flutter-разработчик", en: "Flutter Developer" },
-    location: { ru: "Санкт-Петербург · культура", en: "Saint Petersburg · culture" },
-    period: { ru: "Сен - Дек 2025", en: "Sep - Dec 2025" },
-    duration: { ru: "4 мес", en: "4 mo" },
-    summary: {
-      ru: "Q-Story: история и пешие маршруты через QR и карту. Архитектура клиента - моя.",
-      en: "Q-Story: history and walking routes via QR and a map. The client architecture is mine.",
-    },
-    points: {
-      ru: [
-        "Спроектировал архитектуру клиента: Clean Architecture, feature-based",
-        "QR, геолокация, карты и пешие маршруты, связка с backend API",
-        "Контент без сканирования: достаточно оказаться рядом с меткой",
-        "Холодный старт быстрее примерно на 30%: разделил зависимости и грузил их по мере надобности",
-      ],
-      en: [
-        "Designed the client architecture: Clean Architecture, feature-based",
-        "QR, geolocation, maps and walking routes, wired to the backend API",
-        "Content without scanning: just being near the marker is enough",
-        "Cold start about 30% faster by splitting dependencies and loading them on demand",
-      ],
-    },
-    tags: ["Clean Architecture", "Maps", "Performance", "REST"],
     line: "m1",
   },
   {
@@ -681,25 +824,25 @@ export const experience: ExperienceItem[] = [
     },
     points: {
       ru: [
-        "Клиент, барбер и администратор с разграничением прав",
-        "Бронирование с выбором услуг и realtime-расписанием",
-        "Firebase (Auth, Firestore), база оптимизирована больше чем на 20%",
-        "Приложения клиента и барбера объединил, админ-панель вынес отдельно",
+        "Три роли с разграничением прав на клиенте и в правилах Firestore",
+        "Бронирование с realtime-расписанием: двойная запись на один слот исключена",
+        "Firebase: Auth, Firestore, FCM-уведомления; чтений базы меньше на 20%+",
+        "Объединил приложения клиента и барбера, админку вынес; CI/CD и QR для скачивания приложения",
       ],
       en: [
-        "Client, barber and admin with permission separation",
-        "Booking with service selection and a realtime schedule",
-        "Firebase (Auth, Firestore), database optimised by over 20%",
-        "Merged the client and barber apps, moved the admin panel out on its own",
+        "Three roles with permissions on the client and in Firestore rules",
+        "Booking with a realtime schedule: no double booking of a slot",
+        "Firebase: Auth, Firestore, FCM notifications; 20%+ fewer database reads",
+        "Merged the client and barber apps, split out the admin; CI/CD and a QR app download",
       ],
     },
-    tags: ["Firebase", "Realtime", "Roles", "BLoC"],
+    tags: ["Firebase", "Realtime", "Roles", "CI/CD"],
     line: "m5",
   },
   {
-    company: "Freelance",
+    company: "FOODY",
     role: { ru: "Junior Flutter-разработчик", en: "Junior Flutter Developer" },
-    location: { ru: "Астана · доставка", en: "Astana · delivery" },
+    location: { ru: "Астана · доставка еды", en: "Astana · food delivery" },
     period: { ru: "Окт 2023 - Мар 2024", en: "Oct 2023 - Mar 2024" },
     duration: { ru: "6 мес", en: "6 mo" },
     summary: {
@@ -708,25 +851,25 @@ export const experience: ExperienceItem[] = [
     },
     points: {
       ru: [
-        "Поиск с debounce и учётом concurrency",
-        "10 экранов по макетам Figma",
-        "Исправил ключевые ошибки - стабильность выросла на 40%",
+        "Поиск с debounce и отбрасыванием устаревших ответов",
+        "10 экранов по Figma на переиспользуемых компонентах, адаптив под разные устройства",
+        "Исправил критические баги - доля сессий без падений выросла на 40%",
       ],
       en: [
-        "Search with debounce and concurrency handling",
-        "10 screens from Figma mockups",
-        "Fixed key bugs - stability up 40%",
+        "Search with debounce that drops stale responses",
+        "10 screens from Figma on reusable components, adaptive to any device",
+        "Fixed critical bugs - crash-free sessions up 40%",
       ],
     },
     tags: ["Search", "Figma", "Stability"],
     line: "m1",
   },
   {
-    company: "SKian",
+    company: "Startup",
     role: { ru: "Стажёр Flutter", en: "Flutter Intern" },
     location: { ru: "Петропавловск · логистика", en: "Petropavlovsk · logistics" },
-    period: { ru: "Июн - Авг 2023", en: "Jun - Aug 2023" },
-    duration: { ru: "3 мес", en: "3 mo" },
+    period: { ru: "Июн - Сен 2023", en: "Jun - Sep 2023" },
+    duration: { ru: "4 мес", en: "4 mo" },
     summary: {
       ru: "Первые боевые задачи на Flutter: начало линии.",
       en: "My first real Flutter tasks: where the line begins.",
@@ -735,12 +878,12 @@ export const experience: ExperienceItem[] = [
       ru: [
         "Deep Links сразу в нужные разделы",
         "Система рекламных баннеров",
-        "Вёрстка по Figma и async-сценарии",
+        "Вёрстка всех экранов по Figma",
       ],
       en: [
         "Deep Links straight into the right sections",
         "An ad-banner system",
-        "UI from Figma and async flows",
+        "All screens built from Figma",
       ],
     },
     tags: ["Deep Links", "Figma", "Async"],
@@ -911,7 +1054,7 @@ export type Advantage = { title: L; description: L };
 
 export const advantages: Advantage[] = [
   { title: { ru: "Отвечаю за продукт целиком", en: "I own the whole product" }, description: { ru: "Код, сборка, деплой, релиз. Понимаю, что происходит после «git push».", en: "Code, build, deploy, release. I know what happens after \"git push\"." } },
-  { title: { ru: "Быстро вхожу в чужой код", en: "I get into other people's code fast" }, description: { ru: "Шесть команд и заказчиков с 2023 года. Незнакомый стек не пугает - Swift-приложение под macOS тому пример.", en: "Six teams and clients since 2023. An unfamiliar stack doesn't scare me - a Swift macOS app is proof." } },
+  { title: { ru: "Быстро вхожу в чужой код", en: "I get into other people's code fast" }, description: { ru: "Семь команд и заказчиков с 2023 года. Незнакомый стек не пугает - Swift-приложение под macOS тому пример.", en: "Seven teams and clients since 2023. An unfamiliar stack doesn't scare me - a Swift macOS app is proof." } },
   { title: { ru: "Довожу до конца", en: "I finish what I start" }, description: { ru: "Не останавливаюсь на «вроде работает». Фича готова, когда она в проде.", en: "I don't stop at \"seems to work\". A feature is done when it's in production." } },
   { title: { ru: "Измеряю результат", en: "I measure results" }, description: { ru: "−50% к старту видно в профайлере, а не на словах.", en: "−50% startup shows up in the profiler, not just on paper." } },
   { title: { ru: "Делаю интерфейсы живыми", en: "I make interfaces feel alive" }, description: { ru: "Анимация, 3D, кастомные переходы - и без потери FPS.", en: "Motion, 3D, custom transitions - without dropping frames." } },
@@ -1007,11 +1150,14 @@ export const announcements: L[] = [
   { ru: "Wallpap - живые обои для macOS", en: "Wallpap - live wallpapers for macOS" },
   { ru: "Budini Coffee - кофейня в 3D", en: "Budini Coffee - a coffee shop in 3D" },
   { ru: "Flower Cup - посадите стаканчик", en: "Flower Cup - plant the cup" },
+  { ru: "ruAI - нейросеть на русском", en: "ruAI - an AI that speaks Russian" },
+  { ru: "Frontend Metro - учебник-схема", en: "Frontend Metro - a textbook on a map" },
   { ru: "PORA - список покупок для семьи", en: "PORA - the family shopping list" },
   { ru: "dirigible.community - центр социальных практик", en: "dirigible.community - a social practice centre" },
   { ru: "Xouston - игры для памяти", en: "Xouston - games for memory" },
-  { ru: "Q-Story - история города по QR", en: "Q-Story - city history by QR" },
+  { ru: "Q-Story - история вокруг вас", en: "Q-Story - history all around you" },
   { ru: "KORST - маркетплейс с живым чатом", en: "KORST - a marketplace with live chat" },
+  { ru: "Neiro Peiro - нейросети в Telegram", en: "Neiro Peiro - neural networks in Telegram" },
   { ru: "Конечная - ваш проект", en: "Terminus - your project" },
 ];
 
@@ -1049,17 +1195,17 @@ export const ui = {
     en: "Since 2023 I've gone from an intern building screens from Figma to someone who designs client architecture from scratch. The main lesson: most problems are born not in the code but in decisions made before it.",
   } as L,
   aboutP3: {
-    ru: "В 2026-м линии разошлись: сайты с 3D-сценами для кофейни и эко-стартапа, нативное macOS-приложение на Swift, свои серверы за nginx. Мне нравится, когда результат можно потрогать - и измерить в профайлере.",
-    en: "In 2026 the lines branched out: 3D websites for a coffee shop and an eco-startup, a native macOS app in Swift, my own servers behind nginx. I like results you can touch - and measure in a profiler.",
+    ru: "В 2026-м линии разошлись: Telegram Mini App для AI-бота с бэкендом на Python и Node, сайты с 3D-сценами, нативное macOS-приложение на Swift, свои серверы за nginx. Мне нравится, когда результат можно потрогать - и измерить в профайлере.",
+    en: "In 2026 the lines branched out: a Telegram Mini App for an AI bot with a Python and Node backend, 3D websites, a native macOS app in Swift, my own servers behind nginx. I like results you can touch - and measure in a profiler.",
   } as L,
   factEducation: { ru: "Учёба", en: "Education" } as L,
-  factEducationValue: { ru: "ИТМО, прикладная информатика: мобильные и сетевые технологии (бакалавр, 2029)", en: "ITMO, Applied Informatics: mobile & network technologies (BSc, 2029)" } as L,
+  factEducationValue: { ru: "ИТМО, прикладная информатика: мобильные и сетевые технологии (бакалавр, 2029) · Облачная академия Yandex: DevOps и облака", en: "ITMO, Applied Informatics: mobile & network technologies (BSc, 2029) · Yandex Cloud Academy: DevOps and cloud" } as L,
   factLanguages: { ru: "Языки", en: "Languages" } as L,
   factLanguagesValue: { ru: "Русский - родной · English - B2", en: "Russian - native · English - B2" } as L,
   factFormat: { ru: "Формат", en: "Work format" } as L,
   factFormatValue: {
-    ru: "Полная, частичная или проектная занятость · удалённо, гибрид или офис в Петербурге · разрешение на работу в России и Казахстане",
-    en: "Full-time, part-time or project work · remote, hybrid or on-site in Saint Petersburg · work permit for Russia and Kazakhstan",
+    ru: "Полная, частичная или проектная занятость · удалённо, гибрид или офис в Петербурге · готов к переезду в Москву · самозанятый, могу работать по договору · разрешение на работу в России и Казахстане",
+    en: "Full-time, part-time or project work · remote, hybrid or on-site in Saint Petersburg · open to relocating to Moscow · self-employed, can work under contract · work permit for Russia and Kazakhstan",
   } as L,
   factEnv: { ru: "Рабочее место", en: "Setup" } as L,
   factEnvValue: { ru: "macOS · Xcode, Android Studio, VS Code · сборка и подпись iOS, Android, macOS", en: "macOS · Xcode, Android Studio, VS Code · iOS, Android and macOS build & signing" } as L,

@@ -1,13 +1,16 @@
+/* CV in the site's metro language: tokens mirror src/style.css (light scheme). */
 :root {
   --ink: hsl(222 30% 9%);
   --muted: hsl(220 12% 36%);
   --rule: hsl(220 18% 86%);
-  --tint: hsl(220 16% 96%);
+  --tint: hsl(220 16% 95%);
   --m1: hsl(345 93% 44%);
   --m2: hsl(204 100% 39%);
   --m3: hsl(147 100% 30%);
   --m4: hsl(22 83% 53%);
   --m5: hsl(283 56% 31%);
+  --led-ground: hsl(222 32% 8%);
+  --led: hsl(38 100% 64%);
   --display: "Geologica Variable", system-ui, sans-serif;
   --sans: "Golos Text Variable", system-ui, sans-serif;
   --mono: "JetBrains Mono Variable", ui-monospace, monospace;
@@ -16,7 +19,7 @@
 
 @page {
   size: A4;
-  margin: 12mm 13mm 12mm;
+  margin: 11mm 12mm;
 }
 
 * {
@@ -28,7 +31,7 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  font: 9pt/1.42 var(--sans);
+  font: 8.5pt/1.4 var(--sans);
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
@@ -36,7 +39,7 @@ body {
   width: 210mm;
   min-height: 297mm;
   margin: 24px auto;
-  padding: 12mm 13mm;
+  padding: 11mm 12mm;
   background: #fff;
   box-shadow: 0 20px 60px -30px rgb(0 0 0 / 0.4);
 }
@@ -56,156 +59,337 @@ a {
   color: inherit;
   text-decoration: none;
 }
-p {
+p,
+h1,
+h2,
+h3,
+ul,
+ol,
+dl,
+dd,
+figure {
   margin: 0;
 }
 h1,
 h2,
 h3 {
-  margin: 0;
   font-family: var(--display);
 }
 
-/* Header */
-.head {
+/* ── Hero ───────────────────────────────────────── */
+.hero {
   display: grid;
-  grid-template-columns: 26mm 1fr 66mm;
-  gap: 5mm;
-  align-items: center;
+  grid-template-columns: 1fr 40mm;
+  gap: 8mm;
+  align-items: end;
 }
-.photo {
-  width: 27mm;
-  height: 27mm;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 2.4mm;
+  font: 500 7.6pt var(--mono);
+  color: var(--muted);
+}
+.bs {
+  display: grid;
+  place-items: center;
+  width: 8mm;
+  height: 8mm;
   border-radius: 50%;
-  object-fit: cover;
+  background: var(--m1);
+  color: #fff;
+  font: 700 8pt var(--display);
 }
 h1 {
-  font-size: 25pt;
+  margin-top: 5mm;
+  font-size: 38pt;
   font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.035em;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+h1 span {
+  display: block;
 }
 .role {
-  margin-top: 2mm;
-  font: 600 12pt/1.2 var(--display);
-}
-.place {
-  margin-top: 1.5mm;
-  color: var(--muted);
-  font-size: 8.3pt;
-}
-.contacts {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.9mm;
-  font-size: 8.3pt;
-}
-.contacts li {
-  display: grid;
-  grid-template-columns: 16mm 1fr;
-  white-space: nowrap;
-}
-.contacts span {
-  color: var(--muted);
-}
-.contacts a {
-  font-weight: 600;
-}
-
-.rail {
   display: flex;
-  gap: 1.2mm;
-  margin: 5mm 0 5mm;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2mm 3.5mm;
+  margin-top: 4.5mm;
 }
-.rail i {
-  flex: 1;
-  height: 1.4mm;
+.role b {
+  font: 600 14pt/1 var(--display);
+  letter-spacing: -0.01em;
+}
+.pills {
+  display: inline-flex;
+  gap: 0.9mm;
+}
+.pills i {
+  width: 4.6mm;
+  height: 1.7mm;
   border-radius: 1mm;
   background: var(--c);
 }
-
-/* Columns */
-.cols {
-  display: grid;
-  grid-template-columns: 1fr 55mm;
-  gap: 7mm;
-}
-section + section {
-  margin-top: 5mm;
-}
-h2 {
+.open {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.6mm;
   font-size: 8pt;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 500;
+  color: var(--muted);
+}
+.open i {
+  width: 2.2mm;
+  height: 2.2mm;
+  border-radius: 50%;
+  background: var(--m3);
+  box-shadow: 0 0 0 0.8mm hsl(147 100% 30% / 0.18);
+}
+.place {
+  margin-top: 2.4mm;
+  color: var(--muted);
+  font-size: 8.2pt;
+}
+
+/* Transit pass with the photo, as on the About section */
+.pass {
+  padding: 2.2mm 2.2mm 2.6mm;
+  border-radius: 4mm;
+  background: var(--m2);
+  color: #fff;
+  transform: rotate(2deg);
+  box-shadow: 0 6mm 10mm -7mm rgb(15 23 42 / 0.45);
+}
+.pass-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4mm 1mm 1.8mm;
+  font: 700 5.6pt var(--display);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding-bottom: 1.6mm;
-  margin-bottom: 2.6mm;
-  border-bottom: 0.3mm solid var(--ink);
 }
-.summary {
-  font-size: 9.6pt;
-  line-height: 1.5;
+.pass .m {
+  display: grid;
+  place-items: center;
+  width: 4.4mm;
+  height: 4.4mm;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--m2);
+  font-size: 6.4pt;
+  letter-spacing: 0;
 }
+.pass img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 2.4mm;
+}
+.pass figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1mm;
+  padding: 2mm 1mm 0;
+}
+.pass figcaption b {
+  font: 700 7.4pt/1.1 var(--display);
+}
+.pass figcaption span {
+  font: 500 5.6pt var(--mono);
+  opacity: 0.8;
+}
+
+/* ── Stats & departure board ───────────────────── */
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4mm;
-  margin: 3.5mm 0 0;
-  padding: 3mm 3.5mm;
-  background: var(--tint);
-  border-radius: 2.5mm;
+  gap: 5mm;
+  margin-top: 6mm;
+  padding: 3.4mm 0;
+  border-block: 0.25mm solid var(--rule);
 }
 .stats dt {
-  font: 800 15pt/1 var(--display);
-  letter-spacing: -0.02em;
+  font: 800 19pt/1 var(--display);
+  letter-spacing: -0.03em;
 }
 .stats dd {
-  margin: 1mm 0 0;
+  margin-top: 1.2mm;
   color: var(--muted);
   font-size: 7.6pt;
   line-height: 1.3;
 }
 
-.job,
-.proj {
-  break-inside: avoid;
+.board {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 4mm;
+  border-top: 0.25mm solid var(--rule);
 }
-.job + .job {
-  margin-top: 3.6mm;
+.board li {
+  display: grid;
+  grid-template-columns: 2.6mm 1fr;
+  column-gap: 2.4mm;
+  align-items: center;
+  padding: 2.2mm 2mm 2.2mm 0;
+  border-bottom: 0.25mm solid var(--rule);
 }
-.proj + .proj {
-  margin-top: 2.8mm;
+.board li::before {
+  content: "";
+  grid-row: span 2;
+  width: 2.6mm;
+  height: 2.6mm;
+  border-radius: 50%;
+  background: var(--c);
 }
-.job-head {
+.board span {
+  color: var(--muted);
+  font-size: 6.8pt;
+}
+.board a {
+  font-weight: 600;
+  font-size: 8.2pt;
+  white-space: nowrap;
+}
+
+/* ── Section heading: a line segment with a station on it ── */
+h2 {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 3mm;
+  flex-direction: column;
+  gap: 1.8mm;
+  font-size: 13pt;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 3mm;
 }
-h3 {
+.mark {
+  position: relative;
+  display: block;
+  width: 13mm;
+  height: 2.6mm;
+}
+.mark i {
+  position: absolute;
+  inset: 0.8mm 0;
+  border-radius: 1mm;
+  background: var(--c);
+}
+.mark b {
+  position: absolute;
+  left: 3.6mm;
+  top: 0;
+  width: 2.6mm;
+  height: 2.6mm;
+  border-radius: 50%;
+  background: #fff;
+  border: 0.55mm solid var(--ink);
+}
+section + section,
+.summary,
+.cols {
+  margin-top: 5mm;
+}
+.summary p {
+  font-size: 9.4pt;
+  line-height: 1.5;
+  max-width: 165mm;
+}
+
+.roundel {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 4.2mm;
+  height: 4.2mm;
+  border-radius: 50%;
+  background: var(--c);
+  color: #fff;
+  font: 700 6.4pt/1 var(--display);
+  letter-spacing: 0;
+}
+
+/* ── Columns ───────────────────────────────────── */
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 54mm;
+  gap: 8mm;
+}
+
+/* The route: rail on the left, a station per job */
+.route ol {
+  list-style: none;
+  padding: 0;
+}
+.stop {
+  position: relative;
+  display: flex;
+  gap: 7mm;
+  padding-bottom: 2.6mm;
+}
+.body h3,
+.meta,
+.lead,
+.body ul li {
+  break-inside: avoid;
+  break-after: avoid;
+}
+.body ul li {
+  break-after: auto;
+}
+.stop::before {
+  content: "";
+  position: absolute;
+  left: calc(19mm + 3.5mm - 0.7mm);
+  top: 1.5mm;
+  bottom: -1.5mm;
+  width: 1.4mm;
+  border-radius: 1mm;
+  background: var(--c);
+}
+.stop:last-child::before {
+  bottom: auto;
+  height: 12mm;
+  background: linear-gradient(var(--c), transparent);
+}
+.stop::after {
+  content: "";
+  position: absolute;
+  left: calc(19mm + 3.5mm - 1.9mm);
+  top: 0.5mm;
+  width: 3.8mm;
+  height: 3.8mm;
+  border-radius: 50%;
+  background: #fff;
+  border: 0.7mm solid var(--ink);
+}
+.when {
+  flex: 0 0 19mm;
+  padding-top: 0.6mm;
+  text-align: right;
+  font: 500 7pt/1.35 var(--mono);
+}
+.when small {
+  display: block;
+  color: var(--muted);
+  font-size: 6.6pt;
+}
+.body h3 {
   display: flex;
   align-items: center;
   gap: 1.8mm;
-  font-size: 10.5pt;
+  font-size: 11pt;
   font-weight: 700;
-  letter-spacing: -0.01em;
-}
-h3 small {
-  font: 500 7.8pt var(--sans);
-  color: var(--muted);
-  letter-spacing: 0;
-}
-.when {
-  flex-shrink: 0;
-  font: 500 7.6pt var(--mono);
-  color: var(--muted);
+  letter-spacing: -0.015em;
 }
 .meta {
-  margin-top: 0.6mm;
-  font-size: 8.4pt;
+  margin-top: 0.4mm;
   color: var(--muted);
+  font-size: 8pt;
 }
 .meta b {
   color: var(--ink);
@@ -214,67 +398,190 @@ h3 small {
 .lead {
   margin-top: 1mm;
 }
-.job ul {
-  margin: 1mm 0 0;
-  padding: 0 0 0 4mm;
+.body ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1mm;
 }
-.job li {
-  margin-top: 0.5mm;
+.body ul li {
+  position: relative;
+  padding-left: 3.6mm;
+  margin-top: 0.15mm;
 }
-.job li::marker {
-  color: var(--muted);
-}
-.proj p {
-  margin-top: 0.8mm;
-}
-.proj p b {
-  font-family: var(--display);
-}
-.stack {
-  color: var(--muted);
-  font-size: 7.8pt;
-}
-.more {
-  margin-top: 3.5mm;
-  color: var(--muted);
-  font-size: 8.2pt;
-}
-.more a {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-.pips {
-  display: inline-flex;
-  gap: 0.7mm;
-}
-.pips i {
-  width: 2.4mm;
-  height: 2.4mm;
-  border-radius: 50%;
+.body ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.45mm;
+  width: 2mm;
+  height: 0.9mm;
+  border-radius: 1mm;
   background: var(--c);
 }
 
 /* Sidebar */
-.side {
-  font-size: 8.4pt;
+.side section + section {
+  margin-top: 5mm;
 }
-.skill + .skill {
-  margin-top: 2.6mm;
+.line {
+  break-inside: avoid;
 }
-.skill h3 {
-  font-size: 9pt;
+.line + .line {
+  margin-top: 2.8mm;
 }
-.skill p {
-  margin-top: 0.8mm;
+.line h3 {
+  display: flex;
+  align-items: center;
+  gap: 1.8mm;
+  font-size: 9.2pt;
+  font-weight: 700;
+}
+.line p {
+  margin-top: 1mm;
+  padding-left: 6mm;
   color: var(--muted);
-  line-height: 1.45;
-}
-.side section > p {
+  font-size: 7.8pt;
   line-height: 1.5;
 }
-.updated {
-  margin-top: 6mm;
+.fact {
+  font-size: 8.2pt;
+  line-height: 1.45;
+}
+.fact + .fact {
+  margin-top: 1.2mm;
+}
+
+/* ── Off-route stations: cards with line stripes ── */
+.stations h2 {
+  break-after: avoid;
+}
+.stations {
+  break-before: page;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+}
+.card {
+  overflow: hidden;
+  border: 0.25mm solid var(--rule);
+  border-radius: 3mm;
+  break-inside: avoid;
+}
+.stripe {
+  display: flex;
+  height: 1.4mm;
+}
+.stripe i {
+  flex: 1;
+  background: var(--c);
+}
+.card-in {
+  padding: 3mm 3.6mm 3.4mm;
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.roundels {
+  display: inline-flex;
+}
+.roundels .roundel {
+  box-shadow: 0 0 0 0.5mm #fff;
+}
+.roundels .roundel + .roundel {
+  margin-left: -1mm;
+}
+.yr {
+  font: 500 6.8pt var(--mono);
   color: var(--muted);
-  font: 500 7.2pt var(--mono);
+}
+.card h3 {
+  margin-top: 2mm;
+  font-size: 12pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.status {
+  color: var(--muted);
+  font-size: 7.4pt;
+  font-weight: 500;
+}
+.tag {
+  margin-top: 1.6mm;
+  font-size: 8.2pt;
+}
+.metric {
+  display: flex;
+  align-items: baseline;
+  gap: 2mm;
+  margin-top: 2mm;
+  padding-left: 2mm;
+  border-left: 0.8mm solid var(--c);
+}
+.metric b {
+  font: 800 13pt/1 var(--display);
+  letter-spacing: -0.03em;
+}
+.metric span {
+  color: var(--muted);
+  font-size: 7.4pt;
+  line-height: 1.3;
+}
+.stack {
+  margin-top: 2mm;
+  color: var(--muted);
+  font-size: 7pt;
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6mm 3mm;
+  margin-top: 1.6mm;
+  font: 600 6.8pt var(--mono);
+}
+
+/* ── LED board CTA ─────────────────────────────── */
+.led {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  margin-top: 6mm;
+  padding: 3mm 4.5mm;
+  border-radius: 99mm;
+  background: var(--led-ground);
+  color: var(--led);
+  font: 500 8.4pt var(--mono);
+  break-inside: avoid;
+}
+.led .dot {
+  width: 1.8mm;
+  height: 1.8mm;
+  border-radius: 50%;
+  background: var(--m1);
+}
+.led .lbl {
+  font-size: 6.8pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.led .msg a {
+  color: #fff;
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3mm;
+  color: var(--muted);
+  font: 500 6.8pt var(--mono);
+}
+.foot a {
+  color: var(--ink);
+}
+.body {
+  flex: 1;
+  min-width: 0;
 }

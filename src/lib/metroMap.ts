@@ -16,10 +16,12 @@ export const stations: Station[] = [
   { slug: "korst", label: "KORST", x: 1.6, y: 0.45 },
   { slug: "pora", label: "PORA", x: 3.0, y: 0.7 },
   { slug: "wallpap", label: "Wallpap", x: 4.6, y: -1.9 },
-  { slug: "tg-mini-app", label: "Mini App", x: 4.2, y: 2.4 },
-  { slug: "dirigible", label: "dirigible", x: 1.8, y: 2.9 },
-  { slug: "budini-coffee", label: "Budini", x: -0.8, y: 2.9 },
-  { slug: "flower-cup", label: "Flower Cup", x: -3.4, y: 2.6 },
+  { slug: "tg-mini-app", label: "Neiro Peiro", x: 4.2, y: 2.4 },
+  { slug: "dirigible", label: "dirigible", x: 2.4, y: 2.9 },
+  { slug: "frontend-roadmap", label: "Roadmap", x: 0.6, y: 2.92 },
+  { slug: "budini-coffee", label: "Budini", x: -1.2, y: 2.88 },
+  { slug: "ruai", label: "ruAI", x: -3.0, y: 2.75 },
+  { slug: "flower-cup", label: "Flower Cup", x: -4.8, y: 2.45 },
 ];
 
 export const stationBySlug = Object.fromEntries(stations.map((s) => [s.slug, s])) as Record<string, Station>;
@@ -28,11 +30,11 @@ type P = [number, number] | string;
 
 /** Each line: ordered waypoints (station slugs or raw points) and a parallel offset for shared track. */
 export const linePaths: { id: LineId; offset: number; points: P[] }[] = [
-  { id: "m1", offset: -0.16, points: [[-6.8, -2.9], "hornet", "xouston", "arys", "q-story", "korst", "pora", [4.4, 1.1], [5.8, 0.7]] },
+  { id: "m1", offset: -0.16, points: [[-6.8, -2.9], "hornet", "xouston", "arys", "q-story", "korst", "pora", "tg-mini-app", [5.6, 3.1]] },
   { id: "m5", offset: 0.16, points: [[-4.6, 0.9], [-2.8, 0.1], "arys", "q-story", "korst", "pora", [3.8, -0.3], [3.7, -2.6]] },
   { id: "m3", offset: 0, points: [[2.2, -3.2], [3.6, -2.6], "wallpap", [5.8, -0.6], [6.6, 0.4]] },
-  { id: "m4", offset: 0.17, points: ["wallpap", [3.8, -0.6], "pora", "tg-mini-app", "dirigible", "budini-coffee", "flower-cup", [-5.2, 2.0]] },
-  { id: "m2", offset: -0.17, points: [[6.4, 3.4], "tg-mini-app", "dirigible", "budini-coffee", "flower-cup", [-5.4, 3.4], [-6.8, 2.6]] },
+  { id: "m4", offset: 0.17, points: ["wallpap", [3.8, -0.6], "pora", "tg-mini-app", "dirigible", "frontend-roadmap", "budini-coffee", "ruai", "flower-cup", [-6.2, 1.9]] },
+  { id: "m2", offset: -0.17, points: [[6.4, 3.4], "tg-mini-app", "dirigible", "frontend-roadmap", "budini-coffee", "ruai", "flower-cup", [-6.0, 3.3], [-6.9, 2.6]] },
 ];
 
 /** Resolve a line's waypoints to coordinates, applying its parallel offset on the y axis. */
